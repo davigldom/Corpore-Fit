@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles_es.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ *
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="diet/list" extends="master.page">
+		<put-attribute name="title" value="Lista de dietas" />
+		<put-attribute name="body" value="/views/diet/list.jsp" />
+	</definition>
+	
+	<definition name="diet/edit" extends="master.page">
+		<put-attribute name="title" value="Editar dieta" />
+		<put-attribute name="body" value="/views/diet/edit.jsp" />
+	</definition>
+	
+		<definition name="diet/display" extends="master.page">
+		<put-attribute name="title" value="Dieta:" />
+		<put-attribute name="body" value="/views/diet/display.jsp" />
+	</definition>
+	
+	<definition name="diet/none" extends="master.page">
+		<put-attribute name="title" value="No estas siguiendo ninguna dieta" />
+		<put-attribute name="body" value="/views/diet/none.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>

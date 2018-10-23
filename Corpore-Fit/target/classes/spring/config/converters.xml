@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * converters.xml * * Copyright (C) 2017 Universidad de Sevilla * * The 
+	use of this project is hereby constrained to the conditions of the * TDG 
+	Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd		
+	">
+
+	<util:list id="converters">
+
+		<bean class="converters.ActorToStringConverter" />
+		<bean class="converters.StringToActorConverter" />
+		<bean class="converters.AuthorityToStringConverter" />
+		<bean class="converters.StringToAuthorityConverter" />
+		<bean class="converters.UserAccountToStringConverter" />
+		<bean class="converters.StringToUserAccountConverter" />
+		<bean class="converters.MarkToStringConverter" />
+		<bean class="converters.FriendRequestToStringConverter" />
+		<bean class="converters.MeasureToStringConverter" />
+		<bean class="converters.StringToMarkConverter" />
+		<bean class="converters.StringToMeasureConverter" />
+		<bean class="converters.StringToFriendRequestConverter" />
+
+		<bean class="converters.RoomToStringConverter" />
+		<bean class="converters.StringToRoomConverter" />
+
+		<bean class="converters.ActivityToStringConverter" />
+		<bean class="converters.StringToActivityConverter" />
+
+		<bean class="converters.GymToStringConverter" />
+		<bean class="converters.StringToGymConverter" />
+
+		<bean class="converters.ManagerToStringConverter" />
+		<bean class="converters.StringToManagerConverter" />
+
+		<bean class="converters.ArticleToStringConverter" />
+		<bean class="converters.StringToArticleConverter" />
+
+		<bean class="converters.ProductToStringConverter" />
+		<bean class="converters.StringToProductConverter" />
+
+		<bean class="converters.RoutineToStringConverter" />
+		<bean class="converters.StringToRoutineConverter" />
+
+		<bean class="converters.DayToStringConverter" />
+		<bean class="converters.StringToDayConverter" />
+
+		<bean class="converters.ExerciseToStringConverter" />
+		<bean class="converters.StringToExerciseConverter" />
+
+		<bean class="converters.AdvertToStringConverter" />
+		<bean class="converters.StringToAdvertConverter" />
+
+		<bean class="converters.StringToNutritionistConverter" />
+		<bean class="converters.NutritionistToStringConverter" />
+
+		<bean class="converters.StringToDayScheduleConverter" />
+		<bean class="converters.DayScheduleToStringConverter" />
+
+		<bean class="converters.StringToDailyDietConverter" />
+		<bean class="converters.DailyDietToStringConverter" />
+
+		<bean class="converters.StringToSocialNetworkConverter" />
+		<bean class="converters.SocialNetworkToStringConverter" />
+		
+		<bean class="converters.StringToCreditCardConverter" />
+		<bean class="converters.CreditCardToStringConverter" />
+		
+		<bean class="converters.StringToCommentConverter" />
+		<bean class="converters.CommentToStringConverter" />
+		
+		<bean class="converters.StringToActivityBookConverter" />
+		<bean class="converters.ActivityBookToStringConverter" />
+		
+		<bean class="converters.StringToAppointmentConverter" />
+		<bean class="converters.AppointmentToStringConverter" />
+		
+		<bean class="converters.StringToFoodConverter" />
+		<bean class="converters.FoodToStringConverter" />
+	</util:list>
+
+</beans>

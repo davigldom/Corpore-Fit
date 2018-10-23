@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * i18n-l10n.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd 
+	">
+
+	<util:list id="messages">
+		<value>/views/master-page/messages</value>
+		<value>/views/misc/messages</value>
+		<value>/views/security/messages</value>		
+		<value>/views/welcome/messages</value>
+		
+		<value>/views/actor/messages</value>
+		
+		<value>/views/activity/messages</value>
+		<value>/views/gym/messages</value>
+		<value>/views/nutritionist/messages</value>
+		
+		<value>/views/measure/messages</value>
+		<value>/views/mark/messages</value>
+		<value>/views/friend-request/messages</value>
+		<value>/views/room/messages</value>
+		<value>/views/diet/messages</value>
+		<value>/views/article/messages</value>
+		<value>/views/product/messages</value>
+		<value>/views/social-network/messages</value>
+		<value>/views/advert/messages</value>
+		<value>/views/food/messages</value>
+		<value>/views/routine/messages</value>
+		<value>/views/exercise/messages</value>
+		<value>/views/credit-card/messages</value>
+		<value>/views/subscription/messages</value>
+		<value>/views/appointment/messages</value>
+		<value>/views/order/messages</value>
+	</util:list>
+
+</beans>

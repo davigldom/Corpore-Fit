@@ -1,0 +1,6 @@
+
+package domain;
+
+public enum FoodTime {
+	BREAKFAST, MIDMORNING_SNACK, LUNCH, MIDAFTERNOON_SNACK, DINNER
+}

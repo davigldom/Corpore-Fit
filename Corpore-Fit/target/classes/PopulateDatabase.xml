@@ -1,0 +1,3820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * PopulateDatabase.xml * * Copyright (C) 2017 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+
+	<!-- ADMINS -->
+
+	<bean id="userAccountAdmin1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="admin1" class="domain.Administrator">
+		<property name="name" value="Paco" />
+		<property name="surname" value="Fernández" />
+		<property name="phone" value="+34954223344"></property>
+		<property name="email" value="paco@corporefit.com" />
+		<property name="address" value="Seville" />
+		<property name="birthdate" ref="admin1birthdate" />
+		<property name="photo"
+			value="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" />
+		<property name="banned" value="false" />
+
+		<property name="userAccount" ref="userAccountAdmin1" />
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="admin1birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="876477600000" />
+	</bean>
+	
+	<!-- NUTRITIONISTS -->
+		<!-- NUTRITIONIST 1 -->	
+	<bean id="userAccountNutritionist1" class="security.UserAccount">
+		<property name="username" value="nutri1" />
+		<property name="password" value="16e59f8d56a5d8df48c5ab0ec47e7c50" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="NUTRITIONIST" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dayScheduleMonday1" class="domain.DaySchedule">
+		<property name="day" value="MONDAY"></property>
+		<property name="morningStart" value="07:00" />
+		<property name="morningEnd" value="10:00" />
+		<property name="afternoonStart" value="15:30" />
+		<property name="afternoonEnd" value="18:30" />
+	</bean>
+	
+	<bean id="dayScheduleTuesday1" class="domain.DaySchedule">
+		<property name="day" value="TUESDAY"></property>
+		<property name="morningStart" value="08:00" />
+		<property name="morningEnd" value="12:00" />
+		<property name="afternoonStart" value="16:30" />
+		<property name="afternoonEnd" value="20:30" />
+	</bean>
+	
+	<bean id="dayScheduleWednesday1" class="domain.DaySchedule">
+		<property name="day" value="WEDNESDAY"></property>
+		<property name="morningStart" value="07:00" />
+		<property name="morningEnd" value="10:00" />
+		<property name="afternoonStart" value="15:30" />
+		<property name="afternoonEnd" value="18:30" />
+	</bean>
+	
+	<bean id="dayScheduleThursday1" class="domain.DaySchedule">
+		<property name="day" value="THURSDAY"></property>
+		<property name="morningStart" value="08:00" />
+		<property name="morningEnd" value="12:00" />
+		<property name="afternoonStart" value="16:30" />
+		<property name="afternoonEnd" value="20:30" />
+	</bean>
+	
+	<bean id="dayScheduleFriday1" class="domain.DaySchedule">
+		<property name="day" value="FRIDAY"></property>
+		<property name="morningStart" value="07:00" />
+		<property name="morningEnd" value="10:00" />
+		<property name="afternoonStart" value="15:30" />
+		<property name="afternoonEnd" value="18:30" />
+	</bean>
+	
+	<bean id="dayScheduleSaturday1" class="domain.DaySchedule">
+		<property name="day" value="SATURDAY"></property>
+		<property name="morningStart" value="08:00" />
+		<property name="morningEnd" value="12:00" />
+		<property name="afternoonStart" value="16:30" />
+		<property name="afternoonEnd" value="20:30" />
+	</bean>
+	
+	<bean id="nutritionist1" class="domain.Nutritionist">
+		<property name="name" value="Alejandro" />
+		<property name="surname" value="Ruíz" />
+		<property name="phone" value="+39123346722"></property>
+		<property name="email" value="aleruiz@acme.com" />
+		<property name="address" value="Calle Claudio Guerín, Nº1, 2ºC" />
+		<property name="photo"
+			value="https://s5.eestatic.com/2018/03/09/reportajes/Alimentacion-Dietista_-_nutricionista-Nutricion-Influencers-Comida_rapida-Supermercados-Mercadona-Reportajes_290734302_69142510_1024x576.jpg"/>
+		<property name="birthdate" ref="user1birthdate" />
+		<property name="banned" value="false" />
+		<property name="curriculum" value="https://www.modelocurriculum.net/plantilla-de-curriculum-vitae-basico.html/ejemplo-curriculum-basico" />
+		<property name="officeAddress" value="Calle Claudio Guerín, Nº1, 2ºC" />
+		<property name="validated" value="true" />
+		<property name="schedule">
+			<list>
+				<ref bean="dayScheduleMonday1" />
+				<ref bean="dayScheduleTuesday1" />
+				<ref bean="dayScheduleWednesday1" />
+				<ref bean="dayScheduleThursday1" />
+				<ref bean="dayScheduleFriday1" />
+				<ref bean="dayScheduleSaturday1" />
+			</list>
+		</property>
+		<property name="appointments">
+			<list>
+				<ref bean="appointment1"/>
+			</list>
+		</property>
+		<property name="diets">
+			<list>
+				<ref bean="diet1"/>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccountNutritionist1" />
+	</bean>
+	
+		<!-- NUTRITIONIST 2 -->	
+
+	<bean id="userAccountNutritionist2" class="security.UserAccount">
+		<property name="username" value="nutri2" />
+		<property name="password" value="bf6b60b3c6292665f5ccae99166dacd5" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="NUTRITIONIST" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="nutritionist2" class="domain.Nutritionist">
+		<property name="name" value="Pierre" />
+		<property name="surname" value="Dukan" />
+		<property name="phone" value="+39678233445"></property>
+		<property name="email" value="pierredukan@acme.com" />
+		<property name="address" value="Argel, Argelia" />
+		<property name="photo"
+			value="http://e01-elmundo.uecdn.es/assets/multimedia/imagenes/2014/01/27/13908345356009.jpg"/>
+		<property name="birthdate" ref="nutri2birthdate" />
+		<property name="banned" value="false" />
+		<property name="curriculum" value="https://www.modelocurriculum.net/plantilla-de-curriculum-vitae-basico.html/ejemplo-curriculum-basico" />
+		<property name="officeAddress" value="Argel, Argelia" />
+		<property name="validated" value="false" />
+		<property name="schedule">
+			<list>
+				<ref bean="dayScheduleMonday2" />
+				<ref bean="dayScheduleTuesday2" />
+				<ref bean="dayScheduleWednesday2" />
+				<ref bean="dayScheduleThursday2" />
+				<ref bean="dayScheduleFriday2" />
+				<ref bean="dayScheduleSaturday2" />
+			</list>
+		</property>
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+		<property name="diets">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccountNutritionist2" />
+	</bean>
+	
+	<bean id="dayScheduleMonday2" class="domain.DaySchedule">
+		<property name="day" value="MONDAY"></property>
+	</bean>
+	
+	<bean id="dayScheduleTuesday2" class="domain.DaySchedule">
+		<property name="day" value="TUESDAY"></property>
+	</bean>
+	
+	<bean id="dayScheduleWednesday2" class="domain.DaySchedule">
+		<property name="day" value="WEDNESDAY"></property>
+	</bean>
+	
+	<bean id="dayScheduleThursday2" class="domain.DaySchedule">
+		<property name="day" value="THURSDAY"></property>
+	</bean>
+	
+	<bean id="dayScheduleFriday2" class="domain.DaySchedule">
+		<property name="day" value="FRIDAY"></property>
+	</bean>
+	
+	<bean id="dayScheduleSaturday2" class="domain.DaySchedule">
+		<property name="day" value="SATURDAY"></property>
+	</bean>
+	
+	<bean id="nutri2birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="-898876800000" />
+	</bean>
+	
+	<!-- USERACCOUNTS -->
+	<bean id="userAccountUser1" class="security.UserAccount">
+		<property name="username" value="user1" />
+		<property name="password" value="24c9e15e52afc47c225b757e7bee1f9d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser2" class="security.UserAccount">
+		<property name="username" value="user2" />
+		<property name="password" value="7e58d63b60197ceb55a1c487989a3720" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser3" class="security.UserAccount">
+		<property name="username" value="user3" />
+		<property name="password" value="92877af70a45fd6a2ed7fe81e1236b78" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser4" class="security.UserAccount">
+		<property name="username" value="user4" />
+		<property name="password" value="3f02ebe3d7929b091e3d8ccfde2f3bc6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser5" class="security.UserAccount">
+		<property name="username" value="user5" />
+		<property name="password" value="0a791842f52a0acfbb3a783378c066b8" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser6" class="security.UserAccount">
+		<property name="username" value="user6" />
+		<property name="password" value="affec3b64cf90492377a8114c86fc093" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser7" class="security.UserAccount">
+		<property name="username" value="user7" />
+		<property name="password" value="3e0469fb134991f8f75a2760e409c6ed" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser8" class="security.UserAccount">
+		<property name="username" value="user8" />
+		<property name="password" value="7668f673d5669995175ef91b5d171945" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser9" class="security.UserAccount">
+		<property name="username" value="user9" />
+		<property name="password" value="8808a13b854c2563da1a5f6cb2130868" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser10" class="security.UserAccount">
+		<property name="username" value="user10" />
+		<property name="password" value="990d67a9f94696b1abe2dccf06900322" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser11" class="security.UserAccount">
+		<property name="username" value="user11" />
+		<property name="password" value="03aa1a0b0375b0461c1b8f35b234e67a" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser12" class="security.UserAccount">
+		<property name="username" value="user12" />
+		<property name="password" value="d781eaae8248db6ce1a7b82e58e60435" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser13" class="security.UserAccount">
+		<property name="username" value="user13" />
+		<property name="password" value="d09979d794a6ee60d836f884739f7196" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser14" class="security.UserAccount">
+		<property name="username" value="user14" />
+		<property name="password" value="ef06d5cbf35386ff2203d186eeff7923" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser15" class="security.UserAccount">
+		<property name="username" value="user15" />
+		<property name="password" value="726dedc0d6788b05f486730edcc0e871" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser16" class="security.UserAccount">
+		<property name="username" value="user16" />
+		<property name="password" value="8a62f0beaa5ae938956f5ea290321336" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser17" class="security.UserAccount">
+		<property name="username" value="user17" />
+		<property name="password" value="2b4233ebec7a45e1fb8ddd1aab794f7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser18" class="security.UserAccount">
+		<property name="username" value="user18" />
+		<property name="password" value="7ac18a1893e1d2bd5b46958ce1d2a8d0" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser19" class="security.UserAccount">
+		<property name="username" value="user19" />
+		<property name="password" value="2baab43f784b5b530b5347a50490bb0a" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccountUser20" class="security.UserAccount">
+		<property name="username" value="user20" />
+		<property name="password" value="10880c7f4e4209eeda79711e1ea1723e" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="social1" class="domain.SocialNetwork">
+		<property name="socialNetworkType" value="TWITTER" />
+		<property name="url" value="https://www.twitter.com" />
+	</bean>
+
+	<bean id="social2" class="domain.SocialNetwork">
+		<property name="socialNetworkType" value="FACEBOOK" />
+		<property name="url" value="https://www.facebook.com" />
+	</bean>
+
+	<bean id="social3" class="domain.SocialNetwork">
+		<property name="socialNetworkType" value="INSTAGRAM" />
+		<property name="url" value="https://www.instagram.com" />
+	</bean>
+
+	<bean id="social4" class="domain.SocialNetwork">
+		<property name="socialNetworkType" value="YOUTUBE" />
+		<property name="url" value="https://www.youtube.com" />
+	</bean>
+
+	<bean id="social5" class="domain.SocialNetwork">
+		<property name="socialNetworkType" value="YOUTUBE" />
+		<property name="url" value="https://www.youtube.com" />
+	</bean>
+
+	<bean id="social6" class="domain.SocialNetwork">
+		<property name="socialNetworkType" value="FACEBOOK" />
+		<property name="url" value="https://www.facebook.com" />
+	</bean>
+
+	<bean id="social7" class="domain.SocialNetwork">
+		<property name="socialNetworkType" value="YOUTUBE" />
+		<property name="url" value="https://www.youtube.com" />
+	</bean>
+
+	<bean id="social8" class="domain.SocialNetwork">
+		<property name="socialNetworkType" value="TWITTER" />
+		<property name="url" value="https://www.twitter.com" />
+	</bean>
+
+	<bean id="social9" class="domain.SocialNetwork">
+		<property name="socialNetworkType" value="INSTAGRAM" />
+		<property name="url" value="https://www.instagram.com" />
+	</bean>
+
+	<bean id="social10" class="domain.SocialNetwork">
+		<property name="socialNetworkType" value="INSTAGRAM" />
+		<property name="url" value="https://www.instagram.com" />
+	</bean>
+
+	<bean id="measure1" class="domain.Measure">
+		<property name="creationDate" ref="mark1date" />
+		<property name="weight" value="90" />
+		<property name="chest" value="50" />
+		<property name="thigh" value="15" />
+		<property name="waist" value="60" />
+		<property name="biceps" value="5" />
+		<property name="calf" value="5" />
+	</bean>
+
+	<bean id="measure2" class="domain.Measure">
+		<property name="creationDate" ref="mark2date" />
+		<property name="weight" value="100" />
+		<property name="chest" value="50" />
+		<property name="thigh" value="15" />
+		<property name="waist" value="60" />
+		<property name="biceps" value="7" />
+		<property name="calf" value="8" />
+	</bean>
+
+
+	<bean id="measure3" class="domain.Measure">
+		<property name="creationDate" ref="mark3date" />
+		<property name="weight" value="80" />
+		<property name="chest" value="50" />
+		<property name="thigh" value="15" />
+		<property name="waist" value="62" />
+		<property name="biceps" value="10" />
+		<property name="calf" value="10" />
+	</bean>
+
+
+	<bean id="measure4" class="domain.Measure">
+		<property name="creationDate" ref="mark4date" />
+		<property name="weight" value="70" />
+		<property name="chest" value="50" />
+		<property name="thigh" value="15" />
+		<property name="waist" value="60" />
+		<property name="biceps" value="15" />
+		<property name="calf" value="10" />
+	</bean>
+
+
+	<bean id="measure5" class="domain.Measure">
+		<property name="creationDate" ref="mark5date" />
+		<property name="weight" value="75" />
+		<property name="chest" value="50" />
+		<property name="thigh" value="20" />
+		<property name="waist" value="60" />
+		<property name="biceps" value="15" />
+		<property name="calf" value="10" />
+	</bean>
+
+
+	<bean id="measure6" class="domain.Measure">
+		<property name="creationDate" ref="mark6date" />
+		<property name="weight" value="75" />
+		<property name="chest" value="40" />
+		<property name="thigh" value="15" />
+		<property name="waist" value="50" />
+		<property name="biceps" value="10" />
+		<property name="calf" value="5" />
+	</bean>
+
+
+	<bean id="measure7" class="domain.Measure">
+		<property name="creationDate" ref="mark7date" />
+		<property name="weight" value="70" />
+		<property name="chest" value="30" />
+		<property name="thigh" value="10" />
+		<property name="waist" value="40" />
+		<property name="biceps" value="10" />
+		<property name="calf" value="10" />
+	</bean>
+
+	<bean id="mark1" class="domain.Mark">
+		<property name="creationDate" ref="mark1date" />
+		<property name="benchPress" value="0" />
+		<property name="squat" value="0" />
+		<property name="deadlift" value="5" />
+		<property name="pullUp" value="5" />
+		<property name="rowing" value="0" />
+	</bean>
+
+	<bean id="mark2" class="domain.Mark">
+		<property name="creationDate" ref="mark2date" />
+		<property name="benchPress" value="0" />
+		<property name="squat" value="0" />
+		<property name="deadlift" value="5" />
+		<property name="pullUp" value="10" />
+		<property name="rowing" value="02" />
+	</bean>
+
+	<bean id="mark3" class="domain.Mark">
+		<property name="creationDate" ref="mark3date" />
+		<property name="benchPress" value="0" />
+		<property name="squat" value="0" />
+		<property name="deadlift" value="5" />
+		<property name="pullUp" value="10" />
+		<property name="rowing" value="02" />
+	</bean>
+
+	<bean id="mark4" class="domain.Mark">
+		<property name="creationDate" ref="mark4date" />
+		<property name="benchPress" value="0" />
+		<property name="squat" value="05" />
+		<property name="deadlift" value="10" />
+		<property name="pullUp" value="20" />
+		<property name="rowing" value="05" />
+	</bean>
+
+	<bean id="mark5" class="domain.Mark">
+		<property name="creationDate" ref="mark5date" />
+		<property name="benchPress" value="0" />
+		<property name="squat" value="05" />
+		<property name="deadlift" value="10" />
+		<property name="pullUp" value="20" />
+		<property name="rowing" value="05" />
+	</bean>
+
+	<bean id="mark6" class="domain.Mark">
+		<property name="creationDate" ref="mark6date" />
+		<property name="benchPress" value="0" />
+		<property name="squat" value="05" />
+		<property name="deadlift" value="10" />
+		<property name="pullUp" value="20" />
+		<property name="rowing" value="10" />
+	</bean>
+
+	<bean id="mark7" class="domain.Mark">
+		<property name="creationDate" ref="mark7date" />
+		<property name="benchPress" value="10" />
+		<property name="squat" value="15" />
+		<property name="deadlift" value="40" />
+		<property name="pullUp" value="30" />
+		<property name="rowing" value="20" />
+	</bean>
+
+
+	<bean id="mark8" class="domain.Mark">
+		<property name="creationDate" ref="mark7date" />
+		<property name="benchPress" value="10" />
+		<property name="squat" value="20" />
+		<property name="deadlift" value="5" />
+		<property name="pullUp" value="30" />
+		<property name="rowing" value="40" />
+	</bean>
+
+	<bean id="mark9" class="domain.Mark">
+		<property name="creationDate" ref="mark7date" />
+		<property name="benchPress" value="22" />
+		<property name="squat" value="31" />
+		<property name="deadlift" value="12" />
+		<property name="pullUp" value="2" />
+		<property name="rowing" value="55" />
+	</bean>
+
+	<bean id="mark10" class="domain.Mark">
+		<property name="creationDate" ref="mark7date" />
+		<property name="benchPress" value="12" />
+		<property name="squat" value="34" />
+		<property name="deadlift" value="56" />
+		<property name="pullUp" value="32" />
+		<property name="rowing" value="22" />
+	</bean>
+
+	<bean id="mark11" class="domain.Mark">
+		<property name="creationDate" ref="mark7date" />
+		<property name="benchPress" value="0" />
+		<property name="squat" value="11" />
+		<property name="deadlift" value="25" />
+		<property name="pullUp" value="53" />
+		<property name="rowing" value="20" />
+	</bean>
+
+	<bean id="mark12" class="domain.Mark">
+		<property name="creationDate" ref="mark7date" />
+		<property name="benchPress" value="22" />
+		<property name="squat" value="12" />
+		<property name="deadlift" value="15" />
+		<property name="pullUp" value="19" />
+		<property name="rowing" value="30" />
+	</bean>
+
+	<bean id="mark13" class="domain.Mark">
+		<property name="creationDate" ref="mark7date" />
+		<property name="benchPress" value="2" />
+		<property name="squat" value="33" />
+		<property name="deadlift" value="45" />
+		<property name="pullUp" value="12" />
+		<property name="rowing" value="44" />
+	</bean>
+
+	<bean id="mark14" class="domain.Mark">
+		<property name="creationDate" ref="mark7date" />
+		<property name="benchPress" value="12" />
+		<property name="squat" value="5" />
+		<property name="deadlift" value="5" />
+		<property name="pullUp" value="44" />
+		<property name="rowing" value="34" />
+	</bean>
+
+	<bean id="mark15" class="domain.Mark">
+		<property name="creationDate" ref="mark7date" />
+		<property name="benchPress" value="23" />
+		<property name="squat" value="25" />
+		<property name="deadlift" value="35" />
+		<property name="pullUp" value="55" />
+		<property name="rowing" value="02" />
+	</bean>
+
+	<bean id="mark16" class="domain.Mark">
+		<property name="creationDate" ref="mark7date" />
+		<property name="benchPress" value="55" />
+		<property name="squat" value="55" />
+		<property name="deadlift" value="55" />
+		<property name="pullUp" value="55" />
+		<property name="rowing" value="55" />
+	</bean>
+
+
+	<bean id="mark1date" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1511343000000" />
+	</bean>
+
+	<bean id="mark2date" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1513935000000" />
+	</bean>
+
+	<bean id="mark3date" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1516613400000" />
+	</bean>
+
+	<bean id="mark4date" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1519291800000" />
+	</bean>
+
+	<bean id="mark5date" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1521711000000" />
+	</bean>
+
+	<bean id="mark6date" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1524385800000" />
+	</bean>
+
+	<bean id="mark7date" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1526977800000" />
+	</bean>
+
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="name" value="Tarjeta de Antonio" />
+		<property name="number" value="4716 8677 4269 5249" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="2019" />
+		<property name="CVV" value="304" />
+	</bean>
+
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="name" value="Segunda tarjeta de Antonio" />
+		<property name="number" value="4556 1869 5320 5488" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="2019" />
+		<property name="CVV" value="146" />
+	</bean>
+
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="name" value="Tarjeta de María" />
+		<property name="number" value="4485 7489 1684 4160" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="2020" />
+		<property name="CVV" value="354" />
+	</bean>
+
+	<bean id="creditCard4" class="domain.CreditCard">
+		<property name="name" value="Tarjeta de Fernando Claveles" />
+		<property name="number" value="4039 1109 9386 9936" />
+		<property name="expirationMonth" value="07" />
+		<property name="expirationYear" value="2020" />
+		<property name="CVV" value="365" />
+	</bean>
+	
+	<bean id="creditCardUser5" class="domain.CreditCard">
+		<property name="name" value="Javier Javier Castillo Castillo" />
+		<property name="number" value="5167 1423 6533 4554" />
+		<property name="expirationMonth" value="06" />
+		<property name="expirationYear" value="2022" />
+		<property name="CVV" value="420" />
+	</bean>
+
+	<bean id="request1" class="domain.FriendRequest">
+		<property name="accepted" value="true" />
+		<property name="sender" ref="user1" />
+		<property name="receiver" ref="user2" />
+	</bean>
+
+	<bean id="request2" class="domain.FriendRequest">
+		<property name="accepted" value="true" />
+		<property name="sender" ref="user1" />
+		<property name="receiver" ref="user3" />
+	</bean>
+
+	<bean id="request3" class="domain.FriendRequest">
+		<property name="accepted" value="true" />
+		<property name="sender" ref="user2" />
+		<property name="receiver" ref="user3" />
+	</bean>
+
+	<bean id="request4" class="domain.FriendRequest">
+		<property name="accepted" value="true" />
+		<property name="sender" ref="user2" />
+		<property name="receiver" ref="user4" />
+	</bean>
+
+	<bean id="request5" class="domain.FriendRequest">
+		<property name="accepted" value="true" />
+		<property name="sender" ref="user4" />
+		<property name="receiver" ref="user3" />
+	</bean>
+
+	<bean id="request6" class="domain.FriendRequest">
+		<property name="accepted" value="false" />
+		<property name="sender" ref="user1" />
+		<property name="receiver" ref="user4" />
+	</bean>
+
+	<bean id="routine1" class="domain.Routine">
+		<property name="name" value="Rutina para principiantes" />
+		<property name="user" ref="user1" />
+		<property name="days">
+			<list>
+				<ref bean="day1" />
+				<ref bean="day2" />
+				<ref bean="day3" />
+				<ref bean="day4" />
+				<ref bean="day5" />
+				<ref bean="day6" />
+				<ref bean="day7" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="day1" class="domain.Day">
+		<property name="day" value="MONDAY" />
+		<property name="exercises">
+			<list>
+				<ref bean="exercise1" />
+				<ref bean="exercise2" />
+				<ref bean="exercise3" />
+				<ref bean="exercise4" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="day2" class="domain.Day">
+		<property name="day" value="TUESDAY" />
+		<property name="exercises">
+			<list>
+				<ref bean="exercise5" />
+				<ref bean="exercise6" />
+				<ref bean="exercise7" />
+				<ref bean="exercise8" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="day3" class="domain.Day">
+		<property name="day" value="WEDNESDAY" />
+		<property name="exercises">
+			<list>
+				<ref bean="exercise9" />
+				<ref bean="exercise10" />
+				<ref bean="exercise11" />
+				<ref bean="exercise12" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="day4" class="domain.Day">
+		<property name="day" value="THURSDAY" />
+		<property name="exercises">
+			<list>
+				<ref bean="exercise13" />
+				<ref bean="exercise14" />
+				<ref bean="exercise15" />
+				<ref bean="exercise16" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="day5" class="domain.Day">
+		<property name="day" value="FRIDAY" />
+		<property name="exercises">
+			<list>
+				<ref bean="exercise17" />
+				<ref bean="exercise18" />
+				<ref bean="exercise19" />
+				<ref bean="exercise20" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="day6" class="domain.Day">
+		<property name="day" value="SATURDAY" />
+		<property name="exercises">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="day7" class="domain.Day">
+		<property name="day" value="SUNDAY" />
+		<property name="exercises">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- EXERCISES -->
+	<!-- Exercise1 -->
+	<bean id="exercise1" class="domain.Exercise">
+		<property name="title" value="Pull-ups" />
+		<property name="description"
+			value="Mantenga un agarre ancho, con las palmas hacia fuera. Siempre comience cada repetición totalmente extendido en la posición superior. Utilice las manos como 'ganchos' y céntrese en tirar los codos hacia abajo en lugar de tirar el cuerpo hacia arriba." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/jalonpoleafrontal_clip_image002.jpg" />
+	</bean>
+
+	<!-- Exercise2 -->
+	<bean id="exercise2" class="domain.Exercise">
+		<property name="title" value="Curl invertido" />
+		<property name="description"
+			value="La barra no debe tocar su cuerpo. Manteniendo los ojos mirando al frente, los codos pegados a los lados del cuerpo, y su cuerpo completamente inmóvil, levante lentamente la barra hacia arriba. Apriete sus bíceps en la parte superior del movimiento, luego baje lentamente de vuelta a la posición inicial." />
+		<property name="photo"
+			value="http://1.bp.blogspot.com/-ahd5jZ_5MFo/UlWh1o_T6RI/AAAAAAAAC1Q/M2P_ygjjgNQ/s1600/cover2.jpg" />
+	</bean>
+
+	<!-- Exercise3 -->
+	<bean id="exercise3" class="domain.Exercise">
+		<property name="title" value="Dips" />
+		<property name="description"
+			value="Las inmersiones en la banca trabajan la parte trasera de los hombros y el tríceps, y son un gran ejercicio de levantamiento del peso corporal que se puede hacer en casi cualquier lugar, cuando una banca esté disponible. Es muy fácil de hacer y es ideal para que los principiantes empiecen a desarrollar fuerza en los hombros y brazos." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/triceps-banca_clip_image002.jpg" />
+	</bean>
+
+	<!-- Exercise4 -->
+	<bean id="exercise4" class="domain.Exercise">
+		<property name="title" value="Sentadillas" />
+		<property name="description"
+			value="Ejercicio ideal para el calentamiento o el acondicionamiento de los músculos, si usted es un principiante. Se recomienda que se acostumbre a completar 3 series de 15 sentadillas antes de pasar a sentadillas con peso." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/sentadillas_clip_image001.jpg" />
+	</bean>
+
+	<!-- Exercise5 -->
+	<bean id="exercise5" class="domain.Exercise">
+		<property name="title" value="Sentadillas en Split" />
+		<property name="description"
+			value="Ejercicio ideal para el calentamiento o el acondicionamiento de los músculos, si usted es un principiante. Se recomienda que se acostumbre a completar 3 series de 15 sentadillas antes de pasar a sentadillas con peso." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/sentadillas_clip_image001.jpg" />
+	</bean>
+
+	<!-- Exercise6 -->
+	<bean id="exercise6" class="domain.Exercise">
+		<property name="title" value="Prensa Hombros" />
+		<property name="description"
+			value="La prensa de hombros con mancuernas es un ejercicio efectivo para el desarrollo de los deltoides, y se realiza presionando arriba, extendiendo los brazos. Trabaja múltiples músculos y ayuda a desarrollar hombros grandes y poderosos." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/prensa-hombros_clip_image002.jpg" />
+	</bean>
+
+	<!-- Exercise7 -->
+	<bean id="exercise7" class="domain.Exercise">
+		<property name="title" value="Pull-ups" />
+		<property name="description"
+			value="Posiciónese sentado de cara a la máquina, con los pies firmes en el suelo y la espalda recta. Mantenga un agarre ancho, con las palmas hacia fuera. Siempre comience cada repetición totalmente extendido en la posición superior. Utilice las manos como 'ganchos' y céntrese en tirar los codos hacia abajo en lugar de tirar el cuerpo hacia arriba." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/jalonpoleafrontal_clip_image002.jpg" />
+	</bean>
+
+	<!-- Exercise8 -->
+	<bean id="exercise8" class="domain.Exercise">
+		<property name="title" value="Dips" />
+		<property name="description"
+			value="Las inmersiones en la banca trabajan la parte trasera de los hombros y el tríceps, y son un gran ejercicio de levantamiento del peso corporal que se puede hacer en casi cualquier lugar, cuando una banca esté disponible. Es muy fácil de hacer y es ideal para que los principiantes empiecen a desarrollar fuerza en los hombros y brazos." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/triceps-banca_clip_image002.jpg" />
+	</bean>
+
+	<!-- Exercise9 -->
+	<bean id="exercise9" class="domain.Exercise">
+		<property name="title" value="Sentadillas" />
+		<property name="description"
+			value="Ejercicio ideal para el calentamiento o el acondicionamiento de los músculos, si usted es un principiante. Se recomienda que se acostumbre a completar 3 series de 15 sentadillas antes de pasar a sentadillas con peso." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/sentadillas_clip_image001.jpg" />
+	</bean>
+
+	<!-- Exercise10 -->
+	<bean id="exercise10" class="domain.Exercise">
+		<property name="title" value="Palanca frontal" />
+		<property name="description"
+			value="Posiciónese sentado de cara a la máquina, con los pies firmes en el suelo y la espalda recta. Mantenga un agarre ancho, con las palmas hacia fuera. Siempre comience cada repetición totalmente extendido en la posición superior. Utilice las manos como 'ganchos' y céntrese en tirar los codos hacia abajo en lugar de tirar el cuerpo hacia arriba." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/jalonpoleafrontal_clip_image002.jpg" />
+	</bean>
+
+	<!-- Exercise11 -->
+	<bean id="exercise11" class="domain.Exercise">
+		<property name="title" value="Prensa Hombros" />
+		<property name="description"
+			value="La prensa de hombros con mancuernas es un ejercicio efectivo para el desarrollo de los deltoides, y se realiza presionando arriba, extendiendo los brazos. Trabaja múltiples músculos y ayuda a desarrollar hombros grandes y poderosos." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/prensa-hombros_clip_image002.jpg" />
+	</bean>
+
+	<!-- Exercise12 -->
+	<bean id="exercise12" class="domain.Exercise">
+		<property name="title" value="Pectorales" />
+		<property name="description"
+			value="Las flexiones son un excelente ejercicio para trabajar los músculos del pecho y los brazos. Debido a la posición que usted tiene que mantener para hacer este ejercicio correctamente, también trabaja el núcleo, abdominales, piernas y espalda. Diferentes variaciones de las flexiones plantearán un nuevo desafío los mismos grupos musculares." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/flexiones-pecho_clip_image001.jpg" />
+	</bean>
+
+	<!-- Exercise13 -->
+	<bean id="exercise13" class="domain.Exercise">
+		<property name="title" value="Sentadillas" />
+		<property name="description"
+			value="Ejercicio ideal para el calentamiento o el acondicionamiento de los músculos, si usted es un principiante. Se recomienda que se acostumbre a completar 3 series de 15 sentadillas antes de pasar a sentadillas con peso." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/sentadillas_clip_image001.jpg" />
+	</bean>
+
+	<!-- Exercise14 -->
+	<bean id="exercise14" class="domain.Exercise">
+		<property name="title" value="Dips" />
+		<property name="description"
+			value="Las inmersiones en la banca trabajan la parte trasera de los hombros y el tríceps, y son un gran ejercicio de levantamiento del peso corporal que se puede hacer en casi cualquier lugar, cuando una banca esté disponible. Es muy fácil de hacer y es ideal para que los principiantes empiecen a desarrollar fuerza en los hombros y brazos." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/triceps-banca_clip_image002.jpg" />
+	</bean>
+
+	<!-- Exercise15 -->
+	<bean id="exercise15" class="domain.Exercise">
+		<property name="title" value="Curl invertido" />
+		<property name="description"
+			value="La barra no debe tocar su cuerpo. Manteniendo los ojos mirando al frente, los codos pegados a los lados del cuerpo, y su cuerpo completamente inmóvil, levante lentamente la barra hacia arriba. Apriete sus bíceps en la parte superior del movimiento, luego baje lentamente de vuelta a la posición inicial." />
+		<property name="photo"
+			value="http://1.bp.blogspot.com/-ahd5jZ_5MFo/UlWh1o_T6RI/AAAAAAAAC1Q/M2P_ygjjgNQ/s1600/cover2.jpg" />
+	</bean>
+
+	<!-- Exercise16 -->
+	<bean id="exercise16" class="domain.Exercise">
+		<property name="title" value="Pull-ups" />
+		<property name="description"
+			value="Posiciónese sentado de cara a la máquina, con los pies firmes en el suelo y la espalda recta. Mantenga un agarre ancho, con las palmas hacia fuera. Siempre comience cada repetición totalmente extendido en la posición superior. Utilice las manos como 'ganchos' y céntrese en tirar los codos hacia abajo en lugar de tirar el cuerpo hacia arriba." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/jalonpoleafrontal_clip_image002.jpg" />
+	</bean>
+
+	<!-- Exercise17 -->
+	<bean id="exercise17" class="domain.Exercise">
+		<property name="title" value="Dips" />
+		<property name="description"
+			value="Las inmersiones en la banca trabajan la parte trasera de los hombros y el tríceps, y son un gran ejercicio de levantamiento del peso corporal que se puede hacer en casi cualquier lugar, cuando una banca esté disponible. Es muy fácil de hacer y es ideal para que los principiantes empiecen a desarrollar fuerza en los hombros y brazos." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/triceps-banca_clip_image002.jpg" />
+	</bean>
+
+	<!-- Exercise18 -->
+	<bean id="exercise18" class="domain.Exercise">
+		<property name="title" value="Pectorales" />
+		<property name="description"
+			value="Las flexiones son un excelente ejercicio para trabajar los músculos del pecho y los brazos. Debido a la posición que usted tiene que mantener para hacer este ejercicio correctamente, también trabaja el núcleo, abdominales, piernas y espalda. Diferentes variaciones de las flexiones plantearán un nuevo desafío los mismos grupos musculares." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/flexiones-pecho_clip_image001.jpg" />
+	</bean>
+
+	<!-- Exercise19 -->
+	<bean id="exercise19" class="domain.Exercise">
+		<property name="title" value="Sentadillas" />
+		<property name="description"
+			value="Ejercicio ideal para el calentamiento o el acondicionamiento de los músculos, si usted es un principiante. Se recomienda que se acostumbre a completar 3 series de 15 sentadillas antes de pasar a sentadillas con peso." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/sentadillas_clip_image001.jpg" />
+	</bean>
+
+	<!-- Exercise20 -->
+	<bean id="exercise20" class="domain.Exercise">
+		<property name="title" value="Prensa Hombros" />
+		<property name="description"
+			value="La prensa de hombros con mancuernas es un ejercicio efectivo para el desarrollo de los deltoides, y se realiza presionando arriba, extendiendo los brazos. Trabaja múltiples músculos y ayuda a desarrollar hombros grandes y poderosos." />
+		<property name="photo"
+			value="http://www.rutinaejercicios.com/prensa-hombros_clip_image002.jpg" />
+	</bean>
+	
+	<!-- USERS -->
+	<bean id="user1" class="domain.User">
+		<property name="name" value="Antonio" />
+		<property name="surname" value="Pérez" />
+		<property name="phone" value="+39123456789"></property>
+		<property name="email" value="antonioperez@acme.com" />
+		<property name="address" value="Calle Luís Daoiz, Nº12, 2ºC" />
+		<property name="photo"
+			value="https://k38.kn3.net/taringa/6/8/7/7/7/3/1/agushhhhh/F4E.jpg?212" />
+		<property name="birthdate" ref="user1birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="nutritionist" ref="nutritionist1" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+				<ref bean="appointment1"/>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccountUser1" />
+		<property name="routine" ref="routine1" /> <!-- <property name="diet" ref="diet1" /> <property name="nutritionist" ref="nutritionist1" 
+			/>-->
+<!-- 		<property name="subscription" ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+				<ref bean="mark1" />
+				<ref bean="mark2" />
+				<ref bean="mark3" />
+				<ref bean="mark4" />
+				<ref bean="mark5" />
+				<ref bean="mark6" />
+				<ref bean="mark7" />
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+				<ref bean="measure1" />
+				<ref bean="measure2" />
+				<ref bean="measure3" />
+				<ref bean="measure4" />
+				<ref bean="measure5" />
+				<ref bean="measure6" />
+				<ref bean="measure7" />
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+				<ref bean="request1" />
+				<ref bean="request2" />
+				<ref bean="request6" />
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+				<ref bean="social1" />
+				<ref bean="social2" />
+				<ref bean="social3" />
+				<ref bean="social4" />
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+				<ref bean="creditCard1" />
+				<ref bean="creditCard2" />
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user1birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="874935900000" />
+	</bean>
+
+	<bean id="user2" class="domain.User">
+		<property name="name" value="José Luis" />
+		<property name="surname" value="Fernández" />
+		<property name="phone" value="+39656386789"></property>
+		<property name="email" value="josele@acme.com" />
+		<property name="birthdate" ref="user1birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="STRONGMAN" />
+		<property name="privacy" value="FRIENDS" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser2" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" ref="subscription2" />-->
+		<property name="marks">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+				<ref bean="request3" />
+				<ref bean="request4" />
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+				<ref bean="request1" />
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+				<ref bean="social5" />
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user3" class="domain.User">
+		<property name="name" value="Fernando" />
+		<property name="surname" value="Claveles Mejillo" />
+		<property name="email" value="nando@acme.com" />
+		<property name="birthdate" ref="user1birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CALISTHENICS" />
+		<property name="privacy" value="CLOSED" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser3" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" />-->
+		<property name="subscription" ref="subscription2" />
+		<property name="marks">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+				<ref bean="request2" />
+				<ref bean="request3" />
+				<ref bean="request5" />
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+				<ref bean="creditCard4" />
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user3birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user4" class="domain.User">
+		<property name="name" value="María" />
+		<property name="surname" value="Rojo Blanco" />
+		<property name="phone" value="+39123456222"></property>
+		<property name="email" value="colorina@acme.com" /><!-- <property 
+			name="photo" value="https://k38.kn3.net/taringa/6/8/7/7/7/3/1/agushhhhh/F4E.jpg?212" 
+			/> -->
+		<property name="birthdate" ref="user1birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="BODYBUILDER" />
+		<property name="privacy" value="FRIENDS" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser4" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="subscription" ref="subscriptionUser4" />
+		<property name="marks">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+				<ref bean="request5" />
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+				<ref bean="request4" />
+				<ref bean="request6" />
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+				<ref bean="creditCard3" />
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user4birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user5" class="domain.User">
+		<property name="name" value="Javier Javier" />
+		<property name="surname" value="Castillo Castillo" />
+		<property name="phone" value="+39123456789"></property>
+		<property name="email" value="eldoble@acme.com" />
+		<property name="address" value="Calle Betis, Nº1, 5ºA" /><!-- 
+			<property name="photo" value="https://k38.kn3.net/taringa/6/8/7/7/7/3/1/agushhhhh/F4E.jpg?212" 
+			/> -->
+		<property name="birthdate" ref="user5birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="POWERLIFTER" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser5" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="subscription" ref="subscriptionUser5" />
+		<property name="marks">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+				<ref bean="creditCardUser5" />
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user5birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user6" class="domain.User">
+		<property name="name" value="Luis" />
+		<property name="surname" value="Martín" />
+		<property name="phone" value="+39123456789"></property>
+		<property name="email" value="martillito@acme.com" />
+		<property name="birthdate" ref="user6birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser6" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user6birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user7" class="domain.User">
+		<property name="name" value="Cristiano" />
+		<property name="surname" value="Ronaldo" />
+		<property name="phone" value="+39123456789"></property>
+		<property name="email" value="nojuegoalfutbol@acme.com" /><!-- 
+			<property name="photo" value="https://k38.kn3.net/taringa/6/8/7/7/7/3/1/agushhhhh/F4E.jpg?212" 
+			/> -->
+		<property name="birthdate" ref="user7birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="WEIGHTLIFTER" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser7" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user7birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user8" class="domain.User">
+		<property name="name" value="Miguel" />
+		<property name="surname" value="Rajoy" />
+		<property name="phone" value="+39827364839"></property>
+		<property name="email" value="mrpresident@acme.com" />
+		<property name="address" value="Calle Luís Daoiz, Nº12, 2ºC" /><!-- 
+			<property name="photo" value="https://k38.kn3.net/taringa/6/8/7/7/7/3/1/agushhhhh/F4E.jpg?212" 
+			/> -->
+		<property name="birthdate" ref="user8birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="NONE" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser8" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user8birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user9" class="domain.User">
+		<property name="name" value="Agustina" />
+		<property name="surname" value="De los Claveles" />
+		<property name="phone" value="+39123456789"></property>
+		<property name="email" value="agustinadelosclaveles@acme.com" />
+		<property name="address" value="Calle Luís Daoiz, Nº12, 2ºC" />
+		<property name="photo"
+			value="https://k38.kn3.net/taringa/6/8/7/7/7/3/1/agushhhhh/F4E.jpg?212" />
+		<property name="birthdate" ref="user9birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="STRONGMAN" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser9" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user9birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user10" class="domain.User">
+		<property name="name" value="Michael" />
+		<property name="surname" value="Booker" />
+		<property name="email" value="mramerican@acme.com" />
+		<property name="address" value="Elm Street" /><!-- <property name="photo" 
+			value="https://k38.kn3.net/taringa/6/8/7/7/7/3/1/agushhhhh/F4E.jpg?212" /> -->
+		<property name="birthdate" ref="user10birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser10" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+				<ref bean="mark8" />
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user10birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user11" class="domain.User">
+		<property name="name" value="Guillermo" />
+		<property name="surname" value="Williams" />
+		<property name="email" value="williamthejust@acme.com" /><!-- 
+			<property name="photo" value="https://k38.kn3.net/taringa/6/8/7/7/7/3/1/agushhhhh/F4E.jpg?212" 
+			/> -->
+		<property name="birthdate" ref="user11birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser11" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+				<ref bean="mark9" />
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user11birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user12" class="domain.User">
+		<property name="name" value="Ángela" />
+		<property name="surname" value="Escobar Giráldez" />
+		<property name="phone" value="+39123456789"></property>
+		<property name="email" value="angesc98@acme.com" />
+		<property name="address" value="Plaza de la Vitoria, Nº6, 2ºD" />
+		<property name="birthdate" ref="user12birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="privacy" value="OPEN" />
+
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccountUser12" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+				<ref bean="mark10" />
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user12birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user13" class="domain.User">
+		<property name="name" value="Nuria" />
+		<property name="surname" value="Ruiz" />
+		<property name="phone" value="+39123456789"></property>
+		<property name="email" value="lanutria@acme.com" />
+		<property name="birthdate" ref="user13birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser13" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+				<ref bean="mark11" />
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user13birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user14" class="domain.User">
+		<property name="name" value="Antonia" />
+		<property name="surname" value="Filipina" />
+		<property name="phone" value="+39122222789"></property>
+		<property name="email" value="toñi@acme.com" />
+		<property name="address" value="Calle Luís Daoiz, Nº12, 2ºC" />
+		<property name="birthdate" ref="user14birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="NONE" />
+		<property name="privacy" value="OPEN" />
+
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser14" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user14birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user15" class="domain.User">
+		<property name="name" value="Ángel" />
+		<property name="surname" value="Mármol Fernández" />
+		<property name="phone" value="+34664052167"></property>
+		<property name="email" value="angelmarmolfernandez@gmail.com" />
+		<property name="address" value="Calle Luís Daoiz, Nº12, 2ºC" />
+		<property name="birthdate" ref="user15birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="privacy" value="OPEN" />
+
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccountUser15" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+				<ref bean="mark16" />
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user15birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user16" class="domain.User">
+		<property name="name" value="Francisco Javier" />
+		<property name="surname" value="Abreu Vázquez" />
+		<property name="email" value="abreuvazquez@gmail.com" /><!-- <property 
+			name="photo" value="https://k38.kn3.net/taringa/6/8/7/7/7/3/1/agushhhhh/F4E.jpg?212" 
+			/> -->
+		<property name="birthdate" ref="user16birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser16" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+				<ref bean="mark13" />
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user16birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user17" class="domain.User">
+		<property name="name" value="Daniel" />
+		<property name="surname" value="Castilla Marín" />
+		<property name="email" value="mrchavea@gmail.com" />
+		<property name="birthdate" ref="user17birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser17" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+				<ref bean="mark14" />
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user17birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user18" class="domain.User">
+		<property name="name" value="David" />
+		<property name="surname" value="Iglesias Domínguez" />
+		<property name="email" value="davidiglesias@gmail.com" />
+		<property name="birthdate" ref="user18birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="privacy" value="OPEN" />
+
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccountUser18" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+				<ref bean="mark15" />
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+				<ref bean="social6" />
+				<ref bean="social7" />
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user18birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user19" class="domain.User">
+		<property name="name" value="Luis" />
+		<property name="surname" value="Rus Pegalajar" />
+		<property name="email" value="insiidexbox@gmail.com" />
+		<property name="birthdate" ref="user19birthdate" />
+		<property name="banned" value="true" />
+		<property name="role" value="NONE" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser19" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+				<ref bean="mark12" />
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user19birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+	<bean id="user20" class="domain.User">
+		<property name="name" value="Tim" />
+		<property name="surname" value="Tam Tom" />
+		<property name="email" value="timtamtom@acme.com" />
+		<property name="birthdate" ref="user20birthdate" />
+		<property name="banned" value="false" />
+		<property name="role" value="CROSSFITTER" />
+		<property name="privacy" value="OPEN" />
+		<property name="appointments">
+			<list>
+			</list>
+		</property>
+		<property name="orders">
+			<list>
+			</list>
+		</property>
+
+		<property name="userAccount" ref="userAccountUser20" />
+		<!-- <property name="routine" ref="routine1" /> <property name="diet" ref="diet1" 
+			/> <property name="nutritionist" ref="nutritionist1" /> <property name="subscription" 
+			ref="subscription1" /> -->
+		<property name="marks">
+			<list>
+			</list>
+		</property>
+		<property name="measures">
+			<list>
+			</list>
+		</property>
+		<property name="sentRequests">
+			<list>
+			</list>
+		</property>
+		<property name="receivedRequests">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="shoppingCart">
+			<list>
+			</list>
+		</property>
+		<property name="creditCards">
+			<list>
+			</list>
+		</property>
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user20birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1441206960000" />
+	</bean>
+
+
+
+
+
+	<!-- MANAGERS -->
+
+	<!-- Manager 1 -->
+
+	<bean id="userAccountManager1" class="security.UserAccount">
+		<property name="username" value="manager1" />
+		<property name="password" value="c240642ddef994358c96da82c0361a58" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager1" class="domain.Manager">
+		<property name="name" value="Jim" />
+		<property name="surname" value="Moriarty" />
+		<property name="phone" value="+39123456789"></property>
+		<property name="email" value="professor_moriarty@acme.com" />
+		<property name="address" value="London" />
+		<property name="photo"
+			value="https://www.cheme.cornell.edu/engineering2/customcf/iws_news/uploads/alabi__reis.jpg" />
+		<property name="birthdate" ref="manager1birthdate" />
+		<property name="banned" value="false" />
+
+		<property name="userAccount" ref="userAccountManager1" />
+		<property name="articleRatings">
+			<list>
+				<ref bean="articleRating1" />
+			</list>
+		</property>
+
+		<property name="gym" ref="gym1"></property>
+	</bean>
+
+	<bean id="manager1birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="341190000000" />
+	</bean>
+
+	<!-- Manager 2 -->
+
+	<bean id="userAccountManager2" class="security.UserAccount">
+		<property name="username" value="manager2" />
+		<property name="password" value="8df5127cd164b5bc2d2b78410a7eea0c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager2" class="domain.Manager">
+		<property name="name" value="John" />
+		<property name="surname" value="Doe" />
+		<property name="phone" value="+34664537261" />
+		<property name="email" value="johndoe@acme.com" />
+		<property name="address" value="England" />
+		<property name="photo"
+			value="https://justinjackson.ca/wp-content/uploads/2008/08/justin-jackson-profile-smile-selfie.jpg" />
+		<property name="birthdate" ref="manager2birthdate" />
+		<property name="banned" value="false" />
+
+		<property name="active" value="true" />
+
+		<property name="userAccount" ref="userAccountManager2" />
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+
+		<property name="gym" ref="gym2"></property>
+	</bean>
+
+	<bean id="manager2birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="598921200000" />
+	</bean>
+
+	<!-- Manager 3 -->
+
+	<bean id="userAccountManager3" class="security.UserAccount">
+		<property name="username" value="manager3" />
+		<property name="password" value="2d3a5db4a2a9717b43698520a8de57d0" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager3" class="domain.Manager">
+		<property name="name" value="Fernando" />
+		<property name="surname" value="De Rojas" />
+		<property name="phone" value="+34629502823" />
+		<property name="email" value="rojasfernando@acme.com" />
+		<property name="address" value="Ciudad Real" />
+		<property name="photo"
+			value="http://i.cricketcb.com/stats/img/faceImages/1413.jpg" />
+		<property name="birthdate" ref="manager3birthdate" />
+		<property name="banned" value="false" />
+
+		<property name="active" value="true" />
+
+		<property name="userAccount" ref="userAccountManager3" />
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+
+		<property name="gym" ref="gym3"></property>
+	</bean>
+
+	<bean id="manager3birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="14943600000" />
+	</bean>
+
+	<!-- Manager 4 -->
+
+	<bean id="userAccountManager4" class="security.UserAccount">
+		<property name="username" value="manager4" />
+		<property name="password" value="e1ec6fc941af3ba79a4ac5242dd39735" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager4" class="domain.Manager">
+		<property name="name" value="Iván" />
+		<property name="surname" value="Pérez" />
+		<property name="phone" value="+34623612343" />
+		<property name="email" value="ivan@acme.com" />
+		<property name="address" value="Sevilla" />
+		<property name="photo"
+			value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2D1b_5x2bxNV0A03Aw-3C1v0VvDeO9Nv5wIll_Ny8FM2y_d9nPA" />
+		<property name="birthdate" ref="manager4birthdate" />
+		<property name="banned" value="false" />
+
+		<property name="active" value="true" />
+
+		<property name="userAccount" ref="userAccountManager4" />
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+
+		<property name="gym" ref="gym4"></property>
+	</bean>
+
+	<bean id="manager4birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="189558000000" />
+	</bean>
+	
+	<!-- Manager 5 -->
+
+	<bean id="userAccountManager5" class="security.UserAccount">
+		<property name="username" value="manager5" />
+		<property name="password" value="029cb1d27c0b9c551703ccba2591c334" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager5" class="domain.Manager">
+		<property name="name" value="Carlos" />
+		<property name="surname" value="Martínez" />
+		<property name="phone" value="+34653075742" />
+		<property name="email" value="carlosmartinez@acme.com" />
+		<property name="address" value="Madrid" />
+		<property name="photo"
+			value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSEkBrNkKJxEV0sn35rirbf8pBC42UOMyedKQJWbs6quuqv1x5Cg" />
+		<property name="birthdate" ref="manager5birthdate" />
+		<property name="banned" value="false" />
+
+		<property name="active" value="true" />
+
+		<property name="userAccount" ref="userAccountManager5" />
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+
+		<property name="gym" ref="gym5"></property>
+	</bean>
+
+	<bean id="manager5birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="410482800000" />
+	</bean>
+	
+	<!-- Manager 6 -->
+
+	<bean id="userAccountManager6" class="security.UserAccount">
+		<property name="username" value="manager6" />
+		<property name="password" value="46bae9ead851e0f288529e6322f4fd77" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager6" class="domain.Manager">
+		<property name="name" value="Fernando" />
+		<property name="surname" value="Borrego" />
+		<property name="phone" value="+34677194992" />
+		<property name="email" value="fernandoborrego@acme.com" />
+		<property name="address" value="Málaga" />
+		<property name="photo"
+			value="https://kelley.iu.edu/images/vitae/tlemper-768.jpg" />
+		<property name="birthdate" ref="manager6birthdate" />
+		<property name="banned" value="false" />
+
+		<property name="active" value="true" />
+
+		<property name="userAccount" ref="userAccountManager6" />
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+
+		<property name="gym" ref="gym6"></property>
+	</bean>
+
+	<bean id="manager6birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="-149734800000" />
+	</bean>
+	
+	
+	<!-- Manager 7 -->
+	<bean id="userAccountManager7" class="security.UserAccount">
+		<property name="username" value="manager7" />
+		<property name="password" value="cc544735a88ba804fdd65113230c6e32" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager7" class="domain.Manager">
+		<property name="name" value="Lourdes" />
+		<property name="surname" value="Urbano" />
+		<property name="phone" value="+34600384419" />
+		<property name="email" value="lourdesurbano@acme.com" />
+		<property name="address" value="Lugo" />
+		<property name="photo"
+			value="http://blog.cushwake.com/wp-content/uploads/2018/04/Julia-Blakeley_crop.jpg" />
+		<property name="birthdate" ref="manager7birthdate" />
+		<property name="banned" value="false" />
+
+		<property name="active" value="true" />
+
+		<property name="userAccount" ref="userAccountManager7" />
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+
+<!-- 		<property name="gym" ref="gym7"></property> -->
+	</bean>
+
+	<bean id="manager7birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="636159600000" />
+	</bean>
+
+	<!-- EDITORS -->
+
+	<!-- Editor 1 -->
+
+	<bean id="userAccountEditor1" class="security.UserAccount">
+		<property name="username" value="editor1" />
+		<property name="password" value="c9330587565205a5b8345f60c620ecc6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="EDITOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="editor1" class="domain.Editor">
+		<property name="name" value="Miguelito" />
+		<property name="surname" value="siiiiuuuuu" />
+		<property name="email" value="miguelito@corporefit.com" />
+		<property name="birthdate" ref="editor1birthdate" />
+		<property name="banned" value="false" />
+
+		<property name="userAccount" ref="userAccountEditor1" />
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="editor1birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="895658400000" />
+	</bean>
+
+	<!-- PROVIDERS -->
+
+	<!-- Provider 1 -->
+
+	<bean id="userAccountProvider1" class="security.UserAccount">
+		<property name="username" value="provider1" />
+		<property name="password" value="cdb82d56473901641525fbbd1d5dab56" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="provider1" class="domain.Provider">
+		<property name="name" value="Juanito" />
+		<property name="surname" value="el proveedor" />
+		<property name="email" value="juanito@corporefit.com" />
+		<property name="birthdate" ref="provider1birthdate" />
+		<property name="photo"
+			value="http://i0.kym-cdn.com/photos/images/facebook/000/925/493/19f.jpg" />
+		<property name="banned" value="false" />
+
+		<property name="userAccount" ref="userAccountProvider1" />
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="provider1birthdate" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="802969200000" />
+	</bean>
+
+	<!-- GYMS -->
+
+	<!-- Gym 1 -->
+	<bean id="gym1" class="domain.Gym">
+		<property name="name" value="Vivagym Remedios" />
+		<property name="description"
+			value="La cuota más barata de tu ciudad. Ven a conocernos" />
+		<property name="photo"
+			value="https://www.avaibooksports.com/uploads/images/entidades/source/source_7730/SOLUTEL/vivagym.jpg?1490352276074" />
+		<property name="address" value="Los Remedios" />
+		<property name="schedule"
+			value="De lunes a viernes de 6:00 a 00:00. Sábados, domingos y festivos de 10:00 a 21:00" />
+		<property name="fees" value="20" />
+		<property name="services"
+			value="Apto para minusválidos. Cafetería. Entrenadores personales." />
+
+		<property name="manager" ref="manager1" />
+		<property name="activities">
+			<list>
+				<ref bean="vivafitMonday" />
+				<ref bean="vivafitTuesday" />
+				<ref bean="vivafitFriday" />
+				<ref bean="yogaVivagymMonday" />
+				<ref bean="yogaVivagymTuesday" />
+				<ref bean="yogaVivagymWednesday" />
+				<ref bean="spinningVivagymMonday" />
+				<ref bean="spinningVivagymWednesday" />
+				<ref bean="spinningVivagymThursday" />
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+				<ref bean="social8" />
+			</list>
+		</property>
+
+		<property name="subscriptions">
+			<list>
+				<ref bean="subscription1" />
+				<ref bean="subscription2" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Gym 2 -->
+	<bean id="gym2" class="domain.Gym">
+		<property name="name" value="Dreamfit Sevilla" />
+		<property name="description" value="Material olímpico homologado" />
+		<property name="photo"
+			value="http://laguiadetuciudad.es/lgdtc/img/ciudades/alicante/fichas/gimnasio-dreamfit-alicante_d1_14987263387582063786.jpg" />
+		<property name="address" value="Viapol" />
+		<property name="schedule"
+			value="De lunes a viernes de 6:00 a 00:00. Sábados, domingos y festivos de 10:00 a 21:00" />
+		<property name="fees" value="25" />
+		<property name="services"
+			value="Apto para minusválidos. Entrenadores personales." />
+
+		<property name="manager" ref="manager2" />
+		<property name="activities">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+				<ref bean="social9" />
+			</list>
+		</property>
+
+		<property name="subscriptions">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Gym 3 -->
+	<bean id="gym3" class="domain.Gym">
+		<property name="name" value="Low fit Bormujos" />
+		<property name="description" value="Amplias instalaciones" />
+		<property name="photo"
+			value="https://pbs.twimg.com/profile_images/697844207738875905/UD4-imaY_400x400.jpg" />
+		<property name="address" value="Bormujos" />
+		<property name="schedule"
+			value="De lunes a viernes de 8:00 a 22:00. Sábados, domingos y festivos cerrado" />
+		<property name="fees" value="19" />
+		<property name="services" value="Apto para minusválidos." />
+
+		<property name="manager" ref="manager3" />
+		<property name="activities">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+				<ref bean="social10" />
+			</list>
+		</property>
+
+		<property name="subscriptions">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Gym 4 -->
+	<bean id="gym4" class="domain.Gym">
+		<property name="name" value="Vivagym Madrid" />
+		<property name="description"
+			value="La cuota más barata de tu ciudad. Ven a conocernos" />
+		<property name="photo"
+			value="https://www.avaibooksports.com/uploads/images/entidades/source/source_7730/SOLUTEL/vivagym.jpg?1490352276074" />
+		<property name="address" value="Madrid" />
+		<property name="schedule"
+			value="De lunes a viernes de 6:00 a 00:00. Sábados, domingos y festivos de 10:00 a 21:00" />
+		<property name="fees" value="20" />
+		<property name="services"
+			value="Apto para minusválidos. Cafetería. Entrenadores personales." />
+
+		<property name="manager" ref="manager4" />
+		<property name="activities">
+			<list>
+				<ref bean="vivafit2Monday" />
+				<ref bean="vivafit2Tuesday" />
+				<ref bean="vivafit2Friday" />
+				<ref bean="yogaVivagym2Monday" />
+				<ref bean="yogaVivagym2Tuesday" />
+				<ref bean="yogaVivagym2Wednesday" />
+				<ref bean="spinningVivagym2Monday" />
+				<ref bean="spinningVivagym2Wednesday" />
+				<ref bean="spinningVivagym2Thursday" />
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+
+		<property name="subscriptions">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Gym 5 -->
+	<bean id="gym5" class="domain.Gym">
+		<property name="name" value="Fitness Gym" />
+		<property name="description" value="A las afueras de la ciudad" />
+		<property name="photo"
+			value="https://t4.ftcdn.net/jpg/01/03/81/11/240_F_103811173_rDaO550AmeTIIZhPeq5DSwVzXQClnAXU.jpg" />
+		<property name="address" value="Huelva" />
+		<property name="schedule"
+			value="De lunes a viernes de 8:00 a 23:00. Sábados, domingos y festivos cerrado" />
+		<property name="fees" value="26" />
+		<property name="services" value="Apto para minusválidos." />
+
+		<property name="manager" ref="manager5" />
+		<property name="activities">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="subscriptions">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Gym 6 -->
+	<bean id="gym6" class="domain.Gym">
+		<property name="name" value="Manish Gym" />
+		<property name="description" value="A las afueras de la ciudad" />
+		<property name="photo"
+			value="http://webneel.com/image/logo/3-manish-gym-fitness-logo-design.gif" />
+		<property name="address" value="Barcelona" />
+		<property name="schedule"
+			value="De lunes a sábados de 7:00 a 23:00. Domingos y festivos cerrado" />
+		<property name="fees" value="30" />
+		<property name="services" value="Apto para minusválidos. Cafetería. Fisio. Piscina" />
+
+		<property name="manager" ref="manager6" />
+		<property name="activities">
+			<list>
+			</list>
+		</property>
+		<property name="gymRatings">
+			<list>
+			</list>
+		</property>
+		<property name="socialNetworks">
+			<list>
+			</list>
+		</property>
+		<property name="subscriptions">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- ACTIVITIES -->
+
+	<!-- ACTIVITIES GYM 1 -->
+	<!-- Vivafit -->
+	<bean id="vivafitMonday" class="domain.Activity">
+		<property name="title" value="Vivafit" />
+		<property name="description" value="Circuito funcional" />
+		<property name="photo"
+			value="https://lh3.googleusercontent.com/CneJ47YT8Phg3cj2TOxrhpJM_abawDDWUDo0h60Z4L9DXlTU9b4Pz83TVhDp5czbqWKzzRvJt2YLKZBIcLk8WYP2dw21hoslKg=w620-e365" />
+		<property name="trainer" value="Iván" />
+		<property name="start" ref="startVivafit" />
+		<property name="end" ref="endVivafit" />
+		<property name="day" value="MONDAY"></property>
+
+		<property name="room" ref="salaRojaVivagym" />
+		<property name="gym" ref="gym1" />
+	</bean>
+	
+	<bean id="vivafitTuesday" class="domain.Activity">
+		<property name="title" value="Vivafit" />
+		<property name="description" value="Circuito funcional" />
+		<property name="photo"
+			value="https://lh3.googleusercontent.com/CneJ47YT8Phg3cj2TOxrhpJM_abawDDWUDo0h60Z4L9DXlTU9b4Pz83TVhDp5czbqWKzzRvJt2YLKZBIcLk8WYP2dw21hoslKg=w620-e365" />
+		<property name="trainer" value="Iván" />
+		<property name="start" ref="startVivafit" />
+		<property name="end" ref="endVivafit" />
+		<property name="day" value="TUESDAY"></property>
+
+		<property name="room" ref="salaRojaVivagym" />
+		<property name="gym" ref="gym1" />
+	</bean>
+	
+	<bean id="vivafitFriday" class="domain.Activity">
+		<property name="title" value="Vivafit" />
+		<property name="description" value="Circuito funcional" />
+		<property name="photo"
+			value="https://lh3.googleusercontent.com/CneJ47YT8Phg3cj2TOxrhpJM_abawDDWUDo0h60Z4L9DXlTU9b4Pz83TVhDp5czbqWKzzRvJt2YLKZBIcLk8WYP2dw21hoslKg=w620-e365" />
+		<property name="trainer" value="Iván" />
+		<property name="start" ref="startVivafit" />
+		<property name="end" ref="endVivafit" />
+		<property name="day" value="FRIDAY"></property>
+
+		<property name="room" ref="salaRojaVivagym" />
+		<property name="gym" ref="gym1" />
+	</bean>
+
+	<bean id="startVivafit" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="61200000" />
+	</bean>
+	<bean id="endVivafit" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="64800000" />
+	</bean>
+
+	<!-- Yoga -->
+	<bean id="yogaVivagymMonday" class="domain.Activity">
+		<property name="title" value="Yoga" />
+		<property name="description" value="45min de relajación" />
+		<property name="photo"
+			value="https://cdn.tn.com.ar/sites/default/files/styles/1366x765/public/2018/01/04/happy_yoga_day-1280x720.jpg" />
+		<property name="trainer" value="Paloma" />
+		<property name="start" ref="startYogaVivagym" />
+		<property name="end" ref="endYogaVivagym" />
+		<property name="day" value="MONDAY"></property>
+
+		<property name="room" ref="auditorioVivagym" />
+		<property name="gym" ref="gym1" />
+	</bean>
+	
+	<bean id="yogaVivagymTuesday" class="domain.Activity">
+		<property name="title" value="Yoga" />
+		<property name="description" value="45min de relajación" />
+		<property name="photo"
+			value="https://cdn.tn.com.ar/sites/default/files/styles/1366x765/public/2018/01/04/happy_yoga_day-1280x720.jpg" />
+		<property name="trainer" value="Paloma" />
+		<property name="start" ref="startYogaVivagym" />
+		<property name="end" ref="endYogaVivagym" />
+		<property name="day" value="TUESDAY"></property>
+
+		<property name="room" ref="auditorioVivagym" />
+		<property name="gym" ref="gym1" />
+	</bean>
+	
+	<bean id="yogaVivagymWednesday" class="domain.Activity">
+		<property name="title" value="Yoga" />
+		<property name="description" value="45min de relajación" />
+		<property name="photo"
+			value="https://cdn.tn.com.ar/sites/default/files/styles/1366x765/public/2018/01/04/happy_yoga_day-1280x720.jpg" />
+		<property name="trainer" value="Paloma" />
+		<property name="start" ref="startYogaVivagym" />
+		<property name="end" ref="endYogaVivagym" />
+		<property name="day" value="WEDNESDAY"></property>
+
+		<property name="room" ref="auditorioVivagym" />
+		<property name="gym" ref="gym1" />
+	</bean>
+
+	<bean id="startYogaVivagym" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="39600000" />
+	</bean>
+	<bean id="endYogaVivagym" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="43200000" />
+	</bean>
+
+	<!-- Spinning -->
+	<bean id="spinningVivagymMonday" class="domain.Activity">
+		<property name="title" value="Spinning" />
+		<property name="description" value="Intensidad media" />
+		<property name="photo"
+			value="https://www.mundofitness.com/wp-content/uploads/sp5-800x534.jpg?x56567" />
+		<property name="trainer" value="Laura" />
+		<property name="start" ref="startSpinningVivagym" />
+		<property name="end" ref="endSpinningVivagym" />
+		<property name="day" value="MONDAY"></property>
+
+		<property name="room" ref="salaCycloVivagym" />
+		<property name="gym" ref="gym1" />
+	</bean>
+	
+	<bean id="spinningVivagymWednesday" class="domain.Activity">
+		<property name="title" value="Spinning" />
+		<property name="description" value="Intensidad media" />
+		<property name="photo"
+			value="https://www.mundofitness.com/wp-content/uploads/sp5-800x534.jpg?x56567" />
+		<property name="trainer" value="Laura" />
+		<property name="start" ref="startSpinningVivagym" />
+		<property name="end" ref="endSpinningVivagym" />
+		<property name="day" value="WEDNESDAY"></property>
+
+		<property name="room" ref="salaCycloVivagym" />
+		<property name="gym" ref="gym1" />
+	</bean>
+
+	<bean id="spinningVivagymThursday" class="domain.Activity">
+		<property name="title" value="Spinning" />
+		<property name="description" value="Intensidad media" />
+		<property name="photo"
+			value="https://www.mundofitness.com/wp-content/uploads/sp5-800x534.jpg?x56567" />
+		<property name="trainer" value="Laura" />
+		<property name="start" ref="startSpinningVivagym" />
+		<property name="end" ref="endSpinningVivagym" />
+		<property name="day" value="THURSDAY"></property>
+
+		<property name="room" ref="salaCycloVivagym" />
+		<property name="gym" ref="gym1" />
+	</bean>
+
+	<bean id="startSpinningVivagym" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="39600000" />
+	</bean>
+	<bean id="endSpinningVivagym" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="43200000" />
+	</bean>
+	
+	
+	<!-- ACTIVITIES GYM 4 -->
+	<!-- Vivafit -->
+	<bean id="vivafit2Monday" class="domain.Activity">
+		<property name="title" value="Vivafit" />
+		<property name="description" value="Circuito funcional" />
+		<property name="photo"
+			value="https://lh3.googleusercontent.com/CneJ47YT8Phg3cj2TOxrhpJM_abawDDWUDo0h60Z4L9DXlTU9b4Pz83TVhDp5czbqWKzzRvJt2YLKZBIcLk8WYP2dw21hoslKg=w620-e365" />
+		<property name="trainer" value="Manuel" />
+		<property name="start" ref="startVivafit" />
+		<property name="end" ref="endVivafit" />
+		<property name="day" value="MONDAY"></property>
+
+		<property name="room" ref="salaRojaVivagym2" />
+		<property name="gym" ref="gym4" />
+	</bean>
+	
+	<bean id="vivafit2Tuesday" class="domain.Activity">
+		<property name="title" value="Vivafit" />
+		<property name="description" value="Circuito funcional" />
+		<property name="photo"
+			value="https://lh3.googleusercontent.com/CneJ47YT8Phg3cj2TOxrhpJM_abawDDWUDo0h60Z4L9DXlTU9b4Pz83TVhDp5czbqWKzzRvJt2YLKZBIcLk8WYP2dw21hoslKg=w620-e365" />
+		<property name="trainer" value="Iván" />
+		<property name="start" ref="startVivafit" />
+		<property name="end" ref="endVivafit" />
+		<property name="day" value="TUESDAY"></property>
+
+		<property name="room" ref="salaRojaVivagym2" />
+		<property name="gym" ref="gym4" />
+	</bean>
+	
+	<bean id="vivafit2Friday" class="domain.Activity">
+		<property name="title" value="Vivafit" />
+		<property name="description" value="Circuito funcional" />
+		<property name="photo"
+			value="https://lh3.googleusercontent.com/CneJ47YT8Phg3cj2TOxrhpJM_abawDDWUDo0h60Z4L9DXlTU9b4Pz83TVhDp5czbqWKzzRvJt2YLKZBIcLk8WYP2dw21hoslKg=w620-e365" />
+		<property name="trainer" value="Manuel" />
+		<property name="start" ref="startVivafit" />
+		<property name="end" ref="endVivafit" />
+		<property name="day" value="FRIDAY"></property>
+
+		<property name="room" ref="salaRojaVivagym2" />
+		<property name="gym" ref="gym4" />
+	</bean>
+
+	<!-- Yoga -->
+	<bean id="yogaVivagym2Monday" class="domain.Activity">
+		<property name="title" value="Yoga" />
+		<property name="description" value="45min de relajación" />
+		<property name="photo"
+			value="https://cdn.tn.com.ar/sites/default/files/styles/1366x765/public/2018/01/04/happy_yoga_day-1280x720.jpg" />
+		<property name="trainer" value="Cristina" />
+		<property name="start" ref="startYogaVivagym" />
+		<property name="end" ref="endYogaVivagym" />
+		<property name="day" value="MONDAY"></property>
+
+		<property name="room" ref="auditorioVivagym2" />
+		<property name="gym" ref="gym4" />
+	</bean>
+	
+	<bean id="yogaVivagym2Tuesday" class="domain.Activity">
+		<property name="title" value="Yoga" />
+		<property name="description" value="45min de relajación" />
+		<property name="photo"
+			value="https://cdn.tn.com.ar/sites/default/files/styles/1366x765/public/2018/01/04/happy_yoga_day-1280x720.jpg" />
+		<property name="trainer" value="Cristina" />
+		<property name="start" ref="startYogaVivagym" />
+		<property name="end" ref="endYogaVivagym" />
+		<property name="day" value="TUESDAY"></property>
+
+		<property name="room" ref="auditorioVivagym2" />
+		<property name="gym" ref="gym4" />
+	</bean>
+	
+	<bean id="yogaVivagym2Wednesday" class="domain.Activity">
+		<property name="title" value="Yoga" />
+		<property name="description" value="45min de relajación" />
+		<property name="photo"
+			value="https://cdn.tn.com.ar/sites/default/files/styles/1366x765/public/2018/01/04/happy_yoga_day-1280x720.jpg" />
+		<property name="trainer" value="Cristina" />
+		<property name="start" ref="startYogaVivagym" />
+		<property name="end" ref="endYogaVivagym" />
+		<property name="day" value="WEDNESDAY"></property>
+
+		<property name="room" ref="auditorioVivagym2" />
+		<property name="gym" ref="gym4" />
+	</bean>
+
+	<!-- Spinning -->
+	<bean id="spinningVivagym2Monday" class="domain.Activity">
+		<property name="title" value="Spinning" />
+		<property name="description" value="Intensidad media" />
+		<property name="photo"
+			value="https://www.mundofitness.com/wp-content/uploads/sp5-800x534.jpg?x56567" />
+		<property name="trainer" value="Laura" />
+		<property name="start" ref="startSpinningVivagym" />
+		<property name="end" ref="endSpinningVivagym" />
+		<property name="day" value="MONDAY"></property>
+
+		<property name="room" ref="salaCycloVivagym2" />
+		<property name="gym" ref="gym4" />
+	</bean>
+	
+	<bean id="spinningVivagym2Wednesday" class="domain.Activity">
+		<property name="title" value="Spinning" />
+		<property name="description" value="Intensidad media" />
+		<property name="photo"
+			value="https://www.mundofitness.com/wp-content/uploads/sp5-800x534.jpg?x56567" />
+		<property name="trainer" value="Laura" />
+		<property name="start" ref="startSpinningVivagym" />
+		<property name="end" ref="endSpinningVivagym" />
+		<property name="day" value="WEDNESDAY"></property>
+
+		<property name="room" ref="salaCycloVivagym2" />
+		<property name="gym" ref="gym4" />
+	</bean>
+
+	<bean id="spinningVivagym2Thursday" class="domain.Activity">
+		<property name="title" value="Spinning" />
+		<property name="description" value="Intensidad media" />
+		<property name="photo"
+			value="https://www.mundofitness.com/wp-content/uploads/sp5-800x534.jpg?x56567" />
+		<property name="trainer" value="Laura" />
+		<property name="start" ref="startSpinningVivagym" />
+		<property name="end" ref="endSpinningVivagym" />
+		<property name="day" value="THURSDAY"></property>
+
+		<property name="room" ref="salaCycloVivagym2" />
+		<property name="gym" ref="gym4" />
+	</bean>
+
+	<!-- ROOMS -->
+
+	<!-- ROOMS GYM 1 -->
+
+	<!-- salaRoja -->
+	<bean id="salaRojaVivagym" class="domain.Room">
+		<property name="name" value="Sala Roja" />
+		<property name="capacity" value="1" />
+
+		<property name="manager" ref="manager1" />
+	</bean>
+
+	<!-- Auditorio -->
+	<bean id="auditorioVivagym" class="domain.Room">
+		<property name="name" value="Auditorio principal" />
+		<property name="capacity" value="50" />
+
+		<property name="manager" ref="manager1" />
+	</bean>
+
+	<!-- Sala cyclo -->
+	<bean id="salaCycloVivagym" class="domain.Room">
+		<property name="name" value="Sala Cyclo" />
+		<property name="capacity" value="50" />
+
+		<property name="manager" ref="manager1" />
+	</bean>
+	
+	<!-- Sala cyclo -->
+	<bean id="salaAzul" class="domain.Room">
+		<property name="name" value="Sala Azul" />
+		<property name="capacity" value="10" />
+
+		<property name="manager" ref="manager1" />
+	</bean>
+	
+	
+	<!-- ROOMS GYM 4 -->
+
+	<!-- salaRoja -->
+	<bean id="salaRojaVivagym2" class="domain.Room">
+		<property name="name" value="Sala Roja" />
+		<property name="capacity" value="1" />
+
+		<property name="manager" ref="manager4" />
+	</bean>
+
+	<!-- Auditorio -->
+	<bean id="auditorioVivagym2" class="domain.Room">
+		<property name="name" value="Auditorio principal" />
+		<property name="capacity" value="50" />
+
+		<property name="manager" ref="manager4" />
+	</bean>
+
+	<!-- Sala cyclo -->
+	<bean id="salaCycloVivagym2" class="domain.Room">
+		<property name="name" value="Sala Cyclo" />
+		<property name="capacity" value="50" />
+
+		<property name="manager" ref="manager4" />
+	</bean>
+
+
+	<!-- ARTICLES -->
+	
+	<bean id="article1" class="domain.Article">
+		<property name="title" value="El palmarés de Zidane con el Real Madrid: leyenda en solo dos años y medio" />		
+		<property name="text" value="
+			&lt;p style='text-align:justify'&gt;&lt;img alt='' src='https://as01.epimg.net/futbol/imagenes/2018/05/31/primera/1527761545_844920_1527762312_noticia_normal.jpg' style='float:right; height:338px; margin:10px; width:600px' /&gt;&lt;strong&gt;Con 9 títulos de 13 posibles, es el segundo entrenador con más títulos en la historia del Real Madrid, solo superado por el mítico Miguel Muñoz.&lt;/strong&gt;&lt;/p&gt;
+		
+			&lt;p style='text-align:justify'&gt;&lt;/p&gt;
+			 
+			&lt;p style='text-align:justify'&gt;Dos años y medio después de su llegada el Real Madrid para intentar reflotar al equipo tras la &lt;strong&gt;destitución de Rafa Benítez en enero de 2016&lt;/strong&gt;, muy pocos podían prever lo que Zinedine Zidane ha conseguido como entrenador del conjunto blanco: en el banquillo madridista se ha coronado como uno de los grandes técnicos de la historia del club, eclipsando incluso la imborrable huella que sembró; como jugador.&lt;/p&gt;
+			 
+			&lt;p style='text-align:justify'&gt;Al frente de un equipo de leyenda, &lt;strong&gt;Zidane deja el club en los más alto del fútbol mundial&lt;/strong&gt;, con un palmarés envidiable que lo sitúa como el segundo entrenador con más títulos en la historia del Real Madrid (9 de 13 posibles), solo superado por el mítico Miguel Muñoz (14 trofeos). Para los anales, deja también un hito difícilmente superable en la historia del fútbol continental: es el &lt;strong&gt;primer entrenador que gana tres Copas de Europa consecutivas&lt;/strong&gt;, superando lo que consiguieron Bob Paisley y Carlo Ancelotti.&lt;/p&gt;
+			 
+			&lt;p style='text-align:justify'&gt;&lt;strong&gt;Títulos de Zidane como entrenador del Real Madrid&lt;/strong&gt;&lt;/p&gt;
+			 
+			&lt;ul&gt;
+				&lt;li style='text-align: justify;'&gt;&lt;strong>1 Liga: 2017.&lt;/strong&gt;&lt;/li&gt;
+				&lt;li style='text-align: justify;'&gt;&lt;strong>3 Champions: 2016, 2017, 2018.&lt;/strong&gt;&lt;/li&gt;
+			 	&lt;li style='text-align: justify;'&gt;&lt;strong>2 Supercopas de Europa: 2017, 2018.&lt;/strong&gt;&lt;/li&gt;
+			 	&lt;li style='text-align: justify;'&gt;&lt;strong>2 Mundial de Clubes: 2017, 2018.&lt;/strong&gt;&lt;/li&gt;
+			 	&lt;li style='text-align: justify;'&gt;&lt;strong>1 Supercopa de España: 2016/2017.&lt;/strong>&lt;/li&gt;
+			&lt;/ul&gt;" />		
+		<property name="draft" value="false" />
+		<property name="editor" ref="editor1" />
+		<property name="publicationDate" ref="article1Date" />
+		<property name="articleRatings">
+			<list>
+				<ref bean="articleRating1" />
+			</list>
+		</property>	
+		<property name="comments">
+			<list>
+				<ref bean="comment1" />
+				<ref bean="comment1-2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="article1Date" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1499425200000" />
+	</bean>
+	
+	<bean id="article2" class="domain.Article">
+		<property name="title" value="Mónaco: mucho glamour, poco espectáculo" />		
+		<property name="text" value="
+			&lt;p style='text-align:center'&gt;&lt;img alt='' src='https://www.f1aldia.com/images/articulos/33000/33225-n1.jpg' style='height:400px; width:800px' /&gt;&lt;/p&gt;
+ 
+			&lt;p style='text-align:justify'&gt;Es uno de los Grandes Premios más históricos de la Fórmula 1. De hecho, &lt;strong&gt;a día de hoy parece imposible imaginarse el calendario de este deporte sin una cita en las complejas calles de Montecarlo.&lt;/strong&gt; Y es que todo lo que rodea a esta carrera va mucho más allá de lo que sucede sobre el asfalto: el glamour presente en cada uno de los rincones del principado, los lujosos barcos atracados en los muelles o el incomparable ambiente que se respira en sus alrededores, entre otros. Todo ello hace de Mónaco una cita imprescindible en la categoría. &lt;strong&gt;O eso nos quieren hacer creer,&lt;/strong&gt; porque, más allá de todo lo expuesto, ¿es Mónaco un Gran Premio necesario en la Fórmula 1? &lt;strong&gt;A nivel económico, evidentemente sí; a nivel de espectáculo, la respuesta es un rotundo no.&lt;/strong&gt; Muchos defienden la historicidad de este trazado: &quot;¿Cómo van a eliminar del calendario una prueba tan mítica?&quot;, espetan. Sinceramente, prefiero mil veces una pista como Bakú, que solo cuenta con tres años de historia, que una como Montecarlo, por muy legendaria que esta sea.&lt;/p&gt;
+			 
+			&lt;p style='text-align:justify'&gt;Y es que, lo visto este pasado fin de semana en las estrechas calles monegascas fue un anti-espectáculo en toda regla. &lt;strong&gt;Ni la llegada del compuesto hiperblando, ni la multitud de estrategias con los compuestos que vimos sobre la pista, ni los problemas de Daniel Ricciardo con la unidad de potencia de su monoplaza...;&lt;/strong&gt; nada fue suficiente para que presenciáramos, ni siquiera, una batalla en pista por el triunfo o, al menos, por el podio. Lo que ocurrió en Mónaco este domingo se resume en &lt;strong&gt;20 coches rodando en fila india durante 78 vueltas sin emoción alguna,&lt;/strong&gt; más allá de varios momentos puntuales protagonizados por Max Verstappen, que sí; nos regaló algún adelantamiento, teniendo en cuenta, claro, que partía desde la última plaza de la parrilla.&lt;/p&gt;
+			 
+			&lt;p style='text-align:center'&gt;&lt;img alt='' src='https://www.f1aldia.com/photos/33200/33225/001_small.jpg' style='height:350px; width:728px' /&gt;&lt;/p&gt;
+			 
+			&lt;p style='text-align:center'&gt;&lt;span style='font-size:16px'&gt;&lt;strong&gt;Hacen falta cambios&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+			 
+			&lt;p style='text-align:justify'&gt;El Gran Premio de Mónaco 2018 fue tan sumamente aburrido que &lt;strong&gt;ni siquiera el Safety Car hizo acto de presencia&lt;/strong&gt; (nos tuvimos que conformar con el Virtual Safety Car), aunque esta afirmación ni siquiera debería exponerla en el artículo, ya que la seguridad de los pilotos es lo más importante, y &lt;strong&gt;un espectáculo no debería depender de si el Coche de Seguridad sale o no a la pista.&lt;/strong&gt; Por suerte, el accidente entre Leclerc y Hartley fue lo único reseñable en ese sentido. Sé que muchos argumentarán que el problema con Mónaco viene de muy atrás, pero &lt;strong&gt;esta temporada, con los monoplazas aún más anchos, se ha llegado al límite.&lt;/strong&gt; De igual modo, es necesario recalcar que en esta reseña se menciona este Gran Premio por el hecho de haber sido el último en disputarse, pero perfectamente podría dedicarle un espacio a Montmeló, el cual debería ir dirigido única y exclusivamente a los test invernales, ya que, desde mi punto de vista, el circuito no es apto para acoger una carrera de Fórmula 1.&lt;/p&gt;
+			 
+			&lt;p style='text-align:justify'&gt;A estas alturas, los aficionados ya no esperamos Grandes Premios con 100 adelantamientos, pero &lt;strong&gt;sí queremos Grandes Premios en los que, como mínimo, tengamos el aliciente de que puedan producirse.&lt;/strong&gt; Solo pedimos respeto tanto para nosotros como paro los propios pilotos, pues no queremos que se repitan declaraciones como las vistas este fin de semana, en las que campeones como Hamilton, Räikkönen o Alonso afirmaron que Mónaco había sido &quot;la carrera más aburrida de la historia de la Fórmula 1&quot;. Y vosotros, &lt;strong&gt;¿qué pensáis? ¿Creéis que Mónaco debe seguir formando parte de este deporte a nivel de competición?&lt;/strong&gt;&lt;/p&gt;
+		" />		
+		<property name="draft" value="true" />
+		<property name="editor" ref="editor1" />
+		<property name="articleRatings">
+			<list>
+			</list>
+		</property>	
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	
+	<!-- ARTICLE RATINGS -->
+	<bean id="articleRating1" class="domain.ArticleRating">
+		<property name="rating" value="5" />
+	</bean>
+	
+
+	<!-- COMMENTS -->
+
+	<bean id="comment1" class="domain.Comment">
+		<property name="text" value="¡No puede ser real!" />
+		<property name="moment" ref="commentMoment1" />
+
+		<property name="owner" ref="manager2" />
+		<property name="replies">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="commentMoment1" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1499428800000" />
+	</bean>
+
+	<bean id="comment1-2" class="domain.Comment">
+		<property name="text" value="¡Sí que lo es!" />
+		<property name="moment" ref="commentMoment1-2" />
+
+		<property name="owner" ref="manager3" />
+		<property name="parent" ref="comment1" />
+		<property name="replies">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="commentMoment1-2" class="java.util.Calendar"
+		factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1499429100000" />
+	</bean>
+
+	<!-- PRODUCTS -->
+
+	<bean id="product1" class="domain.Product">
+		<property name="name" value="Barrita energética" />
+		<property name="description" value="¡Llena tu vida de energia!" />
+		<property name="sku" value="BRE-1" />
+		<property name="image"
+			value="https://nutrisport.es/645-thickbox_default/barrita-energetica.jpg" />
+		<property name="price" value="1.25" />
+		<property name="units" value="15" />
+		<property name="provider" ref="provider1" />
+		<property name="advert" ref="advert1" />
+	</bean>
+
+	<bean id="product2" class="domain.Product">
+		<property name="name" value="Claras de huevo" />
+		<property name="description" value="Riquísimas 9 claras de huevo en botella" />
+		<property name="sku" value="BCH-1" />
+		<property name="image"
+			value="http://www.wellnessportsantander.com/wp-content/uploads/2016/04/claras.jpg" />
+		<property name="price" value="1" />
+		<property name="units" value="10" />
+		<property name="provider" ref="provider1" />
+	</bean>
+
+	<!-- ADVERTS -->
+
+	<bean id="advert1" class="domain.Advert">
+		<property name="name" value="Descuento del 5 %" />
+		<property name="start" ref="startAdvert1" />
+		<property name="end" ref="endAdvert1" />
+		<property name="discount" value="5" />
+		<property name="provider" ref="provider1" />
+		<property name="products">
+			<list>
+				<ref bean="product1" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="startAdvert1" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1537261200000" />
+	</bean>
+
+	<bean id="endAdvert1" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1537434000000" />
+	</bean>
+
+	<!-- SUBSCRIPTIONS -->
+
+	<bean id="subscription1" class="domain.Subscription">
+		<property name="user" ref="user1" />
+		<property name="gym" ref="gym1" />
+		<property name="creditCard" ref="creditCard1" />
+	</bean>
+
+	<bean id="subscription2" class="domain.Subscription">
+		<property name="user" ref="user3" />
+		<property name="gym" ref="gym1" />
+		<property name="creditCard" ref="creditCard4" />
+	</bean>
+	
+	<bean id="subscriptionUser4" class="domain.Subscription">
+		<property name="user" ref="user4" />
+		<property name="gym" ref="gym4" />
+		<property name="creditCard" ref="creditCard3" />
+	</bean>
+	
+	<bean id="subscriptionUser5" class="domain.Subscription">
+		<property name="user" ref="user5" />
+		<property name="gym" ref="gym4" />
+		<property name="creditCard" ref="creditCardUser5" />
+	</bean>
+
+	<!-- APPOINTMENTS -->
+	
+	<bean id="appointment1" class="domain.Appointment">
+		<property name="cancelReason" value="Appoint user1 nutri1" />
+		<property name="cancelled" value="false" />
+		<property name="comments" value="Appoint user1 nutri1" />
+		<property name="time" ref="appointmentDate1" />
+		<property name="user" ref="user1" />
+		<property name="nutritionist" ref="nutritionist1" />
+	</bean>	
+
+	<bean id="appointmentDate1" class="java.util.Calendar" factory-method="getInstance">
+		<constructor-arg ref="timeZone" />
+		<property name="timeInMillis" value="1540018800000" />
+	</bean>
+	
+	<!-- DIETS -->
+	
+		<!-- DIET1 -->
+	<bean id="diet1" class="domain.Diet">
+		<property name="name" value="This is the diet 1" />
+		<property name="comments" value="Comments of the diet 1" />
+		<property name="nutritionist" ref="nutritionist1" />
+		<property name="dailyDiets">
+			<list>
+				<ref bean="dailyDiet1Monday" />
+				<ref bean="dailyDiet1Tuesday" />
+				<ref bean="dailyDiet1Wednesday" />
+				<ref bean="dailyDiet1Thursday" />
+				<ref bean="dailyDiet1Friday" />
+				<ref bean="dailyDiet1Saturday" />
+				<ref bean="dailyDiet1Sunday" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dailyDiet1Monday" class="domain.DailyDiet">
+		<property name="day" value="MONDAY" />
+		<property name="foods">
+			<list>
+				<ref bean="food1M"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dailyDiet1Tuesday" class="domain.DailyDiet">
+		<property name="day" value="TUESDAY" />
+		<property name="foods">
+			<list>
+				<ref bean="food1T"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dailyDiet1Wednesday" class="domain.DailyDiet">
+		<property name="day" value="WEDNESDAY" />
+		<property name="foods">
+			<list>
+				<ref bean="food1W"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dailyDiet1Thursday" class="domain.DailyDiet">
+		<property name="day" value="THURSDAY" />
+		<property name="foods">
+			<list>
+				<ref bean="food1TH"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dailyDiet1Friday" class="domain.DailyDiet">
+		<property name="day" value="FRIDAY" />
+		<property name="foods">
+			<list>
+				<ref bean="food1F"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dailyDiet1Saturday" class="domain.DailyDiet">
+		<property name="day" value="SATURDAY" />
+		<property name="foods">
+			<list>
+				<ref bean="food1S"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dailyDiet1Sunday" class="domain.DailyDiet">
+		<property name="day" value="SUNDAY" />
+		<property name="foods">
+			<list>
+				<ref bean="food1SU"/>
+			</list>
+		</property>
+	</bean>
+	
+
+	<!-- FOOD -->
+		<!-- FOOD1 -->
+	<bean id="food1M" class="domain.Food">
+		<property name="name" value="Glass of milk" />
+		<property name="calories" value="146" />
+		<property name="time" value="BREAKFAST"/>
+		<property name="amount" value="1" />
+		<property name="image" value="https://sunkoshitimes.com/wp-content/uploads/2018/01/pure-milk.jpg" />
+	</bean>
+
+	<bean id="food1T" class="domain.Food">
+		<property name="name" value="Glass of milk" />
+		<property name="calories" value="146" />
+		<property name="time" value="BREAKFAST"/>
+		<property name="amount" value="1" />
+		<property name="image" value="https://sunkoshitimes.com/wp-content/uploads/2018/01/pure-milk.jpg" />
+	</bean>
+	
+	<bean id="food1W" class="domain.Food">
+		<property name="name" value="Glass of milk" />
+		<property name="calories" value="146" />
+		<property name="time" value="BREAKFAST"/>
+		<property name="amount" value="1" />
+		<property name="image" value="https://sunkoshitimes.com/wp-content/uploads/2018/01/pure-milk.jpg" />
+	</bean>
+
+	<bean id="food1TH" class="domain.Food">
+		<property name="name" value="Glass of milk" />
+		<property name="calories" value="146" />
+		<property name="time" value="BREAKFAST"/>
+		<property name="amount" value="1" />
+		<property name="image" value="https://sunkoshitimes.com/wp-content/uploads/2018/01/pure-milk.jpg" />
+	</bean>
+	
+	<bean id="food1F" class="domain.Food">
+		<property name="name" value="Glass of milk" />
+		<property name="calories" value="146" />
+		<property name="time" value="BREAKFAST"/>
+		<property name="amount" value="1" />
+		<property name="image" value="https://sunkoshitimes.com/wp-content/uploads/2018/01/pure-milk.jpg" />
+	</bean>
+	
+	<bean id="food1S" class="domain.Food">
+		<property name="name" value="Glass of milk" />
+		<property name="calories" value="146" />
+		<property name="time" value="BREAKFAST"/>
+		<property name="amount" value="1" />
+		<property name="image" value="https://sunkoshitimes.com/wp-content/uploads/2018/01/pure-milk.jpg" />
+	</bean>
+	
+	<bean id="food1SU" class="domain.Food">
+		<property name="name" value="Glass of milk" />
+		<property name="calories" value="146" />
+		<property name="time" value="BREAKFAST"/>
+		<property name="amount" value="1" />
+		<property name="image" value="https://sunkoshitimes.com/wp-content/uploads/2018/01/pure-milk.jpg" />
+	</bean>
+	<!-- ANCILLARY BEANS -->
+
+	<bean id="timeZone" class="java.util.TimeZone" factory-method="getTimeZone">
+		<constructor-arg value="UTC" />
+	</bean>
+</beans>

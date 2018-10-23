@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	
+	<definition name="credit-card/list" extends="master.page">	
+		<put-attribute name="title" value="Credit Card: List" />
+		<put-attribute name="body" value="/views/credit-card/list.jsp" />
+	</definition>
+	
+	<definition name="credit-card/create" extends="master.page">	
+		<put-attribute name="title" value="Credit Card: New Credit Card" />
+		<put-attribute name="body" value="/views/credit-card/create.jsp" />
+	</definition>
+
+	
+</tiles-definitions>

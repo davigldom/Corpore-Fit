@@ -1,0 +1,703 @@
+/* common.css
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ * 
+ */
+
+#content{
+	background-color: rgba(255, 255, 255, 0.65);
+	width:80vw;
+	margin: auto;
+	margin-top:3vh;
+    border: solid 0.5px;
+    border-color: #E2DFD7;
+    padding-bottom: 6vh;
+	
+}
+
+#circularPhoto{
+	border: solid 0.5px;
+	border-color: rgba(222, 202, 140, 0.78);
+	border-radius:50%;
+	box-sizing: border-box;
+	width: 8.5vw;
+	height: 8.5vw;
+	
+}
+
+#profilePhoto{
+	width: 8.5vw;
+	height: 8.5vw;
+	margin-left: 10%;
+	float: left;
+	
+}
+
+#textInDiv{
+	height:13vw;
+	text-align: left;
+	margin-left: 25%;
+	font-size: 0.8vw;
+	
+}
+
+#socialNetworks{
+	float:right;
+	margin-right: 13%;
+}
+
+#exercises{
+	
+}
+
+#buttons{
+	margin: auto;
+}
+
+#editProfile{
+	transition: 1s;
+	float:right;
+	margin-right:1vw;
+    background-color: #fff;
+    border: 1px solid #66757f;
+    color: #66757f;
+    border-radius: 10px;
+    box-shadow: none;
+    cursor: pointer;
+    font-size: 14px;
+    /* font-weight: bold; */
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#editProfile:hover{
+    background-color: #A2CFE4;
+    border: 1px solid #66757f;
+    color: white;
+    box-shadow: none;
+    cursor: pointer;
+    font-size: 14px;
+    /* font-weight: bold; */
+    line-height: 20px;
+    padding: 8px 18px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+}
+
+ #body {
+	font-family: 'Abel', sans-serif; 
+	text-align: center; 
+	margin:0px 0px 0px 0px;
+	background-color: #F7F5EF;
+}
+
+textarea#body {
+	text-align: left;
+	background-color: white;
+}
+
+  .background{
+	padding-top:1%;
+	width:85%;
+	margin:auto;
+	display:table;
+	-webkit-border-radius: 10px 5px;
+ }
+ .diet{
+ 	height:4em;
+ 	text-align:center;
+	width:98%;
+	margin:auto;
+	-webkit-border-radius: 10px 5px;
+ }
+ 
+  #moment{
+  	float:right;
+ 	display:inline-block;
+ 	margin-right:1%;
+ 	color:white;
+	font-size:10pt;	
+ }
+ 
+ #dietElement{
+
+ 	margin-left:0.2%;
+ 	margin-top:1%;
+	width:29.2vh;
+	height:29.2vh;
+ 	float:left;
+ 	 background: linear-gradient(to bottom right,#A8CEA3, #C8DCC5);	
+/*  	background-color:#A8CEA3; */
+ 	display:inline-block;
+ 	text-decoration:none;
+ 	color:#777777;
+	font-size:1.2em;	
+	transition:1s;
+	margin-bottom: 0.2%;
+ }
+ 
+ #dietElement:hover{
+ 	width:31vh;
+ }
+ 
+  #name{
+		border-style:solid;
+		border-color:#545454;
+		border-width:thin;
+ 	margin-left:0.2%;
+ 	margin-top:0.2%;
+/*  	float:left; */
+	display:block;
+	padding-top:13vh;
+	padding-bottom:13vh;
+ 	 background: linear-gradient(to bottom right,#98CE91, #EBEFEA);	
+/*  	background-color:#A8CEA3; */
+/*  	display:inline-block; */
+ 	text-decoration:none;
+ 	color:#777777;
+	font-size:3vh;	
+	overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+	transition:1s;
+	margin-bottom: 0.2%;
+ }
+ 
+ #name:hover{
+ 		border-style:solid ;
+ 		border-color:black;
+ 	color:white; 	
+ 	background: linear-gradient(to bottom right,#677B64, #C8DCC5);	
+/*  	background-color:#677B64; */
+ }
+
+ 
+ #title{
+ 	display:inline-block;
+ 	margin:0;
+ 	padding-top:1.4%;
+ 	color:white;
+	font-size:13pt;	
+	transition:0.5s;
+ }
+ 
+  #text{
+   	display:inline-block;
+/*   	margin:0; */
+ 	padding-bottom:2%;
+ 	color:white;
+	font-size:11pt;	
+	transition:0.5s;
+ }
+ 
+	#delete{
+ 	text-decoration:none;
+  	float:right;
+ 	margin-right:3%;
+ 	margin-top:-15%;
+	color:#777777;	
+	font-size:2.2vh;	
+	transition:1s;
+	}
+	
+	#delete:hover{
+ 	text-decoration:none;
+ 	color:#DA5959;
+	font-size:2.5vh;;	
+	}
+	
+#time{
+	/* display:block; */
+	
+}
+#schedule{
+	font-size:20px !important;
+ 	font-family: 'Abel', sans-serif; 
+	list-style: none;
+    width: 60%;
+    text-align: center;
+	display: table;
+	margin: auto;
+	padding: 0px;
+	background-color: #322f32;
+}
+
+#schedule li{
+	width:10%;
+	display: table-cell;
+	background-color: #322f32;
+	margin: 0px;
+}
+
+#schedule li a {
+	text-align:center;
+	padding: 10px;
+	display: block;
+	background-color: transparent;
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#menu li a:hover{
+	color:#7CAFB7 ;
+	transition: 0.5s;
+
+}
+
+.error {
+	color: red;
+	font-weight: bolder;
+}
+
+.message {
+	color: red;
+	font-weight: bolder;
+}
+
+
+
+#banner{
+	float:left; 
+	width:100%;
+	margin:0px 0px 0px 0px;
+	background-color: #CED8F6;
+}
+
+#languages{
+	text-align:left; 
+	margin-left:8px;
+}
+
+#articleSummary {
+	width: 80%;
+	margin: auto;
+	text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
+    font-size: large;
+}
+
+#articleBody {
+	width: 80%;
+	margin: auto;
+	clear: both;
+	overflow: auto;
+}
+
+#messageBody {
+	width: 80%;
+	margin: auto;
+	text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
+}
+
+#search {
+	display: block;
+	float: right;
+	margin-right: 10%;
+}
+
+.cortar{
+	margin: auto;
+	width: 80%;
+	text-overflow:ellipsis;
+	white-space:nowrap; 
+	overflow:hidden;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	transition: all 1s;
+	text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
+}
+
+.cortar:hover {
+	width: 80%;
+	white-space: initial;
+	overflow: visible;
+	cursor: pointer;
+}
+
+div.discountLabel{
+	font-size: 1.2vw;
+	display: inline-block;
+	vertical-align: middle;
+	padding-top: 2.5vh;
+}
+
+div.oldPrice {
+	text-decoration: line-through;
+	font-size: 2vw;
+    color: red;
+    display: inline-block;
+    margin-left: 4vh;
+    margin-top: 4vh;
+    float: left;
+    font-family: impact;
+}
+
+div.newPrice {
+	font-size: 3vw;
+    color: green;
+    display: inline-block;
+    margin-left: 4vh;
+    margin-top: 1.5vh;
+    float: left;
+    font-family: impact;
+}
+
+div.productImg {
+    width: 30%;
+    height: auto;
+    background-color: white;
+    margin-left: 14.5%;
+    margin-right: 0.5%;
+    display: inline;
+    float: left;
+}
+
+div.productInfo {
+    width: 40%;
+    height: 50vh;
+    margin-left: 0.5%;
+    display: inline-block;
+    margin-right: 14.5%;
+}
+
+div.productPrice {
+	width: 100%;
+    height: 12vh;
+   	background-color: white;
+}
+
+div.productOtherInfo {
+	width: 100%;
+    height: 37.7vh;
+   	background-color: white;
+   	margin-top: 0.4vh;
+   	/* overflow: auto; */
+}
+
+div.productDescription {
+	text-align: justify;
+	width: 85%;
+	display: block;
+	margin: auto;
+	font-size: 0.9vw;
+	padding-top: 1.5vh;
+	height: 27vh;
+	overflow: auto;
+	clear: both;
+}
+
+div.productProvider {
+	font-size: 1vw;
+	float:left;
+	vertical-align: bottom;
+	text-align: left;
+	padding-left: 8%;
+	padding-top: 2%;
+	display: inline;
+	overflow: auto;
+}
+
+div.productBuy {
+	padding-top: 2.5%;
+	display: inline-block;
+	height: 10vh;
+	width: 40%
+}
+
+div.productAmount {
+	display: inline-block;
+	float: left;
+	overflow: auto;
+	margin-top: 1vh;
+	text-align: left;
+	padding-left: 8%;
+	width: 50%;
+	clear: both;
+}
+
+.buyButton {
+  display: inline-block;
+  padding: 1.5vh 1.5vw;
+  font-size: 1vw;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 1.5vh;
+  box-shadow: 0 9px #999;
+}
+
+.buyButton:hover {
+	background-color: #3e8e41
+}
+
+.buyButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+img.product {
+	display: block;
+	max-width: 100%;
+	height: 50vh;
+	vertical-align: middle;
+	margin: auto;
+	transition: width 1s, height 1s, transform 1s;
+	-moz-transition: width 1s, height 1s, -moz-transform 1s;
+	-webkit-transition: width 1s, height 1s, -webkit-transform 1s;
+	-o-transition: width 1s, height 1s,-o-transform 1s;
+}
+
+img.product:hover{
+	transform : scale(1.5);
+	-moz-transform : scale(1.5);      /* Firefox */
+	-webkit-transform : scale(1.5);   /* Chrome - Safari */
+	-o-transform : scale(1.5);        /* Opera */
+}
+
+p.oldPriceList {
+	margin: 0 0 0px;
+	text-decoration: line-through;
+	display: inline;
+	color: red;
+}
+
+#contenedorAdd {
+  	display: inline-block;
+  	min-width: 80%;
+  	max-width: 80%;
+  	border: none;
+  	float: left;
+  	margin-top: 2vh;
+  	margin-right: 2.5vw;
+  	min-height: 3vh;
+}
+
+#textDivAdd {
+  	background-color: #F7F5EF;
+  	width: 100%;
+  	text-align: left;
+  	border-bottom-style: solid;
+  	border-width: 1px;
+  	border-color: #D8D8D8;
+  	min-height: 3vh;
+  	font-size: 2vh;
+  	display: inline-block;
+}
+
+#textDivAdd:focus {
+	border:none;
+	outline:none;
+	border-bottom-style: solid;
+  	border-width: 2px;
+  	border-color: black;
+}
+
+div.principalPhotoAdd {
+	display: inline-block;
+	float: left;
+	margin-left: 2.5vw;
+	margin-right: 1.5vw;
+}
+
+div#addButtons {
+	width: 15%;
+	display: none;
+	margin: 0 0 0px;
+	margin-top: 1.5vh;
+	margin-right: 2.5vw;
+	float: right;
+	margin-bottom: 1.5vh;
+}
+
+div.addComment {
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+	min-height: 10vh;
+	margin-bottom: 1vh;
+	clear: both;
+	overflow:auto
+}
+
+img.photo {
+	height: 8vh;
+	width: auto;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	border-radius: 50%;
+}
+
+div.commentsDiv {
+	margin-top: 5vh;
+	clear: both;
+}
+
+div.commentDiv {
+	width: 70%;
+	margin: auto;
+	margin-bottom: 5vh;
+	border-style: solid;
+	border-width: 2px;
+  	border-color: #D8D8D8;
+  	border-radius: 10px;
+  	min-height: 10vh;
+  	overflow: auto;
+  	position: relative;
+}
+
+div.commentPhoto {
+	display: inline-block;
+	float: left;
+	margin-left: 1vw;
+}
+
+div.commentText {
+	display: inline-block;
+	min-height: 8.75vh;
+	float: left;
+	font-size: 2vh;
+	margin-top: 1.25vh;
+	margin-left: 1.5vw;
+	margin-right: 3vw;
+	width: 80%;
+	text-align: left;
+	clear: right;
+	overflow: auto;
+}
+
+div.commentReply {
+	overflow: auto;
+	width: 75%;
+	float: right;
+}
+
+div.contenedorReply {
+  	display: inline-block;
+  	min-width: 85%;
+  	max-width: 85%;
+  	border: none;
+  	float: left;
+  	margin-top: 2vh;
+  	min-height: 3vh;
+}
+
+div.textDivReply {
+  	background-color: #F7F5EF;
+  	width: 100%;
+  	text-align: left;
+  	border-bottom-style: solid;
+  	border-width: 1px;
+  	border-color: #D8D8D8;
+  	min-height: 3vh;
+  	font-size: 2vh;
+}
+
+div.textDivReply:focus {
+	border:none;
+	outline:none;
+	border-bottom-style: solid;
+  	border-width: 2px;
+  	border-color: black;
+}
+
+div.principalPhotoReply {
+	display: inline-block;
+	float: right;
+	margin-left: 0.7vw;
+	margin-right: 1.5vw;
+}
+
+div.replyButtons {
+	width: 25%;
+	display: none;
+	margin: 0 0 0px;
+	margin-top: 1.5vh;
+	margin-right: 2.5vw;
+	float: left;
+	margin-bottom: 1vh;
+}
+
+div.replyDiv {
+	width: 70%;
+	float: right;
+	margin: auto;
+	margin-top: 1.5vh;
+	margin-bottom: 1.5vh;
+	margin-right: 1vw;
+	border-style: solid;
+	border-width: 1.5px;
+  	border-color: #D8D8D8;
+  	border-radius: 10px;
+  	min-height: 10vh;
+  	overflow:auto
+}
+
+div.replyPhoto {
+	display: inline-block;
+	float: right;
+	margin-left: 1vw;
+	margin-right: 1vw;
+}
+
+div.replyText {
+	display: inline-block;
+	min-height: 8.75vh;
+	float: right;
+	font-size: 2vh;
+	margin-top: 1.25vh;
+	margin-left: 1.5vw;
+	width: 80%;
+	text-align: right;
+	clear: left;
+	overflow: auto;
+}
+
+div.deleteReply {
+	display: none;
+	margin-bottom: 0.8vh;
+}
+
+div.deleteComment {
+	display: none;
+	float: left;
+	margin-top: 1.25vh;
+}
+
+div.publishedDiv {
+	float: right;
+	font-size: 1.25vw;
+	margin-bottom: 1vh;
+}
+
+div.draftDiv {
+	float: left;
+	font-size: 1.25vw;
+	margin-bottom: 1vh;
+}
+
+div.articleText {
+	clear: both;
+}
+
+p.averageNumber {
+	font-size: 1.25vw;
+}
